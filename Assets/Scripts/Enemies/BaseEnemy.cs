@@ -26,6 +26,8 @@ public class BaseEnemy : PausableBehaviour
         CalculateNextShot();
     }
 
+    #region Core
+
     private void OnDestroyed()
     {
         Destroy(gameObject);
@@ -53,6 +55,8 @@ public class BaseEnemy : PausableBehaviour
         _timeNextShot = Time.timeSinceLevelLoad + _timeNextShot;
     }
 
+    #endregion
+
     private void CalculateNextShot()
     {
         _timeNextShot = Time.timeSinceLevelLoad + Random.Range(_minDelayBetweenShots, _maxDelayBetweenShots);
@@ -60,9 +64,12 @@ public class BaseEnemy : PausableBehaviour
 
     private void Shoot()
     {
-        var clone = Instantiate(_bulletPrefab);
-        clone.transform.position = _bulletOrigin.position;
-        clone.transform.right = _bulletOrigin.right;
+        var bullet_clone = Instantiate(_bulletPrefab);
+        bullet_clone.transform.position = _bulletOrigin.position;
+        bullet_clone.transform.right = _bulletOrigin.right;
+
+        //Set
+        bullet_clone.GetComponent<Bullet>().Configure_bullet(this.gameObject);
     }
 
     private void FixedUpdate()

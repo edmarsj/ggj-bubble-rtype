@@ -1,3 +1,4 @@
+using Game.Sounds;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,5 +31,8 @@ public class Damageable : MonoBehaviour
             Dead = true;
             OnDie?.Invoke();
         }
+
+        //Sound
+        Sound_system.Create_sound("Retro_impact", 0.2f);
     }
 }

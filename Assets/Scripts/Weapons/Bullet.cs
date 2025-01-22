@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class Bullet : PausableBehaviour
 {
+    [Header("Stats")]
     [field: SerializeField] public float Speed { get; set; }
     [field: SerializeField] public float DurationSeconds { get; set; }
     [field: SerializeField] public int Damage { get; set; }
 
-    private Rigidbody2D _rb;
-    private Collider2D _collider;
     private Vector2 _velocity;
     private float _ttl;
+    internal GameObject bulletOwner;
+
+    //Components
+    private Rigidbody2D _rb;
+    private Collider2D _collider;
 
     private void Start()
     {
+        //Set
         _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
         _ttl = Time.timeSinceLevelLoad + DurationSeconds;
     }
+
+    #region Core
+
+    internal void Configure_bullet(GameObject parent)
+    {
+        //Set
+        bulletOwner = parent;
+    } 
 
     protected override void DoUpdate()
     {
@@ -40,6 +53,10 @@ public class Bullet : PausableBehaviour
         _ttl = Time.timeSinceLevelLoad + _ttl;
     }
 
+    #endregion
+
+    #region Functions
+
     private List<Collider2D> _overlaping = new();
     private void FixedUpdate()
     {
@@ -50,11 +67,15 @@ public class Bullet : PausableBehaviour
         {
             if (_overlaping[i].TryGetComponent<Damageable>(out var damageable))
             {
+                //Validate
+                if(damageable.gameObject == bulletOwner) { return; }
+
+                //Set
                 damageable.TakeDamage(Damage);
                 Destroy(gameObject);
             }
         }
     }
 
-
+    #endregion
 }

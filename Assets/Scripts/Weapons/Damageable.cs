@@ -5,15 +5,15 @@ public class Damageable : MonoBehaviour
 {
     [field: SerializeField] public float MaxLife { get; set; }
     [field: SerializeField] public UnityEvent OnDie { get; set; }
-    private float _currentLife;
+    public float CurrentLife { get; private set; }
 
     [field: SerializeField] public bool Dead { get; set; }
 
-    public float LifePercent => _currentLife / MaxLife;
+    public float LifePercent => CurrentLife / MaxLife;
 
     private void Start()
     {
-        _currentLife = MaxLife;
+        CurrentLife = MaxLife;
     }
 
     public void TakeDamage(int amt)
@@ -23,9 +23,9 @@ public class Damageable : MonoBehaviour
             return;
         }
 
-        _currentLife -= amt;
+        CurrentLife -= amt;
 
-        if (_currentLife <= 0)
+        if (CurrentLife <= 0)
         {
             Dead = true;
             OnDie?.Invoke();

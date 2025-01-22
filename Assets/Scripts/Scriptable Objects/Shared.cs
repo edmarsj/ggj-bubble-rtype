@@ -14,6 +14,7 @@ public class Shared : ScriptableObject
     [field: SerializeField] public UnityEvent OnBeginBossBattle { get; set; }
 
     public BossBase Boss { get; set; }
+    public Player Player { get; set; }
 
     internal void AddScore(int points)
     {

@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Shared _shared;
     [SerializeField] private TMP_Text _txtLevelName;
     [SerializeField] private TMP_Text _txtPoints;
+    [SerializeField] private TMP_Text _txtLife;
     [SerializeField] private CanvasGroup _cgBoss;
     [SerializeField] private TMP_Text _txtBossName;
     [SerializeField] private Image _imgBossGauge;
@@ -29,6 +30,7 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         _txtPoints.text = _shared.TotalPoints.ToString();
+        _txtLife.text = _shared.Player.Life.ToString();
         if(_shared.Boss)
         {
             _imgBossGauge.fillAmount = _shared.Boss.LifePercent;

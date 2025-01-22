@@ -22,7 +22,7 @@ public class Bullet : PausableBehaviour
 
     protected override void DoUpdate()
     {
-        _velocity = Vector2.right * Speed;
+        _velocity = transform.right * Speed;
 
         if (Time.timeSinceLevelLoad > _ttl)
         {

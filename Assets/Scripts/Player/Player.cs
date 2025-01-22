@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : PausableBehaviour
 {
@@ -13,14 +14,26 @@ public class Player : PausableBehaviour
 
     private Vector2 _velocity = Vector2.zero;
 
-   
+    private Damageable _damageable;
+    public float Life => _damageable.CurrentLife;
 
-    
+    private void Awake()
+    {
+        _shared.Player = this;
+    }
+
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();       
+        _damageable = GetComponent<Damageable>();
+        _damageable.OnDie.AddListener(OnPlayerDie);
     }
-    
+
+    private void OnPlayerDie()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
     protected override void DoUpdate()
     {
         var levelModificators = _shared.CurrentLevel.Modificators;

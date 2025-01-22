@@ -30,7 +30,11 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         _txtPoints.text = _shared.TotalPoints.ToString();
-        _txtLife.text = _shared.Player.Life.ToString();
+        if (_shared.Player)
+        {
+            _txtLife.text = _shared.Player.Life.ToString();
+        }
+
         if(_shared.Boss)
         {
             _imgBossGauge.fillAmount = _shared.Boss.LifePercent;

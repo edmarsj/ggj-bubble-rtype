@@ -12,7 +12,7 @@ public class BossBase : PausableBehaviour
     private Damageable _damageable;
 
     public float LifePercent => _damageable.LifePercent;
-    private void Start()
+    private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _damageable = GetComponent<Damageable>();

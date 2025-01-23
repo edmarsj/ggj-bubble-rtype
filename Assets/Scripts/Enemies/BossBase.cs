@@ -24,6 +24,11 @@ public class BossBase : PausableBehaviour
         Destroy(gameObject);
         _shared.AddScore(_points);
         _shared.BossDefeated = true;
+
+        _shared.OnEndBossBattle.Invoke();
+
+        //Drop worm hole
+        var worm_hole = Instantiate(Resources.Load("Prefabs/Map/Worm_hole"), transform.position, Quaternion.identity);
     }
 
     protected override void DoUpdate()

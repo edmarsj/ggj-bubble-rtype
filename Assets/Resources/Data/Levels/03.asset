@@ -10,24 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b52ad9ffdcd3ef4e86f1d61b461dc4f, type: 3}
-  m_Name: 01
+  m_Name: 03
   m_EditorClassIdentifier: 
-  <LevelName>k__BackingField: The begining
+  <LevelName>k__BackingField: I'm way too slow
   <PointsRequirement>k__BackingField: 5
   <Modificators>k__BackingField:
     <Vertical>k__BackingField: 1
     <Horizontal>k__BackingField: 1
     <InvertControls>k__BackingField: 0
-    <SpeedScale>k__BackingField: 1
+    <SpeedScale>k__BackingField: 0.1
   <Spawners>k__BackingField:
   - <Id>k__BackingField: 0
     <RateMinute>k__BackingField: 10
-    <Prefab>k__BackingField: {fileID: 883049057742373826, guid: b43e689d42ccf964593a55240681838a, type: 3}
+    <Prefab>k__BackingField: {fileID: 8190953616151918008, guid: 8729a9aea1410e64b90e27bb9c2b4935,
+      type: 3}
   - <Id>k__BackingField: 1
     <RateMinute>k__BackingField: 15
-    <Prefab>k__BackingField: {fileID: 883049057742373826, guid: b43e689d42ccf964593a55240681838a, type: 3}
+    <Prefab>k__BackingField: {fileID: 8190953616151918008, guid: 8729a9aea1410e64b90e27bb9c2b4935,
+      type: 3}
   - <Id>k__BackingField: 2
     <RateMinute>k__BackingField: 6
-    <Prefab>k__BackingField: {fileID: 883049057742373826, guid: b43e689d42ccf964593a55240681838a, type: 3}
-  <BossPrefab>k__BackingField: {fileID: 3152627809375481738, guid: 93e209a13153b9841bc3e3b2fa543ea9, type: 3}
-  <NextLevel>k__BackingField: {fileID: 11400000, guid: ba54adf40b8e85d418cd992fac53a6a8, type: 2}
+    <Prefab>k__BackingField: {fileID: 8190953616151918008, guid: 8729a9aea1410e64b90e27bb9c2b4935,
+      type: 3}
+  <BossPrefab>k__BackingField: {fileID: 3152627809375481738, guid: 93e209a13153b9841bc3e3b2fa543ea9,
+    type: 3}
+  <NextLevel>k__BackingField: {fileID: 11400000, guid: 6e3ec792e166573499245998157b5fbf,
+    type: 2}

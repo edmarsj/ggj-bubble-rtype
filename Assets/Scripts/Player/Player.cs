@@ -12,11 +12,11 @@ public class Player : PausableBehaviour
     [SerializeField] private Bullet _bulletPrefab;
 
     private Rigidbody2D _rb;
-
     private Vector2 _velocity = Vector2.zero;
-
     private Damageable _damageable;
     public float Life => _damageable.CurrentLife;
+
+    private float bullet_charge;
 
     #region Triggers
 
@@ -27,6 +27,17 @@ public class Player : PausableBehaviour
             case "Enemy":
                 //Set
                 _damageable.TakeDamage(1);
+                break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch(collision.tag)
+        {
+            case "Worm_hole":
+                //Call
+                _shared.Player_touch_worm_hole.Invoke();
                 break;
         }
     }
@@ -60,9 +71,22 @@ public class Player : PausableBehaviour
         _velocity = levelModificators.InvertControls ? new Vector2(vertical, horizontal)
                                                       : new Vector2(horizontal, vertical);
 
+        //Inputs
         if (Input.GetButtonDown("Fire1"))
         {
+            //Set
+            bullet_charge = 0;
+        }
+        else if(Input.GetButtonUp("Fire1"))
+        {
+            //Call
             Shoot();
+        }
+
+        if(Input.GetButton("Fire1"))
+        {
+            //Set
+            bullet_charge += Time.deltaTime;
         }
     }
 
@@ -72,7 +96,7 @@ public class Player : PausableBehaviour
         bullet_clone.transform.position = _bulletOrigin.position;
 
         //Set
-        bullet_clone.GetComponent<Bullet>().Configure_bullet(this.gameObject);
+        bullet_clone.GetComponent<Bullet>().Configure_bullet(this.gameObject, bullet_charge);
 
         //Sound
         Sound_system.Create_sound("Laser_shoot", 0.3f, true);

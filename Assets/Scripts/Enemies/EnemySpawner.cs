@@ -1,46 +1,54 @@
 using System.Linq;
 using UnityEngine;
+using Game.Enemies;
 
-public class EnemySpawner : PausableBehaviour
+namespace Game
 {
-    [SerializeField] private SpawnerConfig.SpawnerId _spawnerId;
-
-    private Bounds _boundaries;
-    private SpawnerConfig _spawnerConfig;
-
-    private float _timeNextSpawn = 0f;
-
-    private void Start()
+    public class EnemySpawner : PausableBehaviour
     {
-        var colliderVolume = GetComponent<BoxCollider2D>();
-        _boundaries = colliderVolume.bounds;
-        _spawnerConfig = _shared.CurrentLevel.Spawners.FirstOrDefault(m => m.Id == _spawnerId);
+        [SerializeField] private SpawnerConfig.SpawnerId _spawnerId;
 
-        if (_spawnerConfig == null)
+        private Bounds _boundaries;
+        private SpawnerConfig _spawnerConfig;
+
+        private float _timeNextSpawn = 0f;
+
+        private void Start()
         {
-            Destroy(gameObject);
+            var colliderVolume = GetComponent<BoxCollider2D>();
+            _boundaries = colliderVolume.bounds;
+            _spawnerConfig = _shared.CurrentLevel.Spawners.FirstOrDefault(m => m.Id == _spawnerId);
+
+            if (_spawnerConfig == null)
+            {
+                Destroy(gameObject);
+            }
+
+            CalculateNextSpawn();
         }
 
-        CalculateNextSpawn();
-    }
-
-    private void CalculateNextSpawn()
-    {
-        _timeNextSpawn = Time.timeSinceLevelLoad + 60f / _spawnerConfig.RateMinute;
-    }
-
-    protected override void DoUpdate()
-    {
-        if (_shared.LevelStage == LevelStage.Spawners)
+        private void CalculateNextSpawn()
         {
-            if (Time.timeSinceLevelLoad > _timeNextSpawn)
+            _timeNextSpawn = Time.timeSinceLevelLoad + 60f / _spawnerConfig.RateMinute;
+        }
+
+        protected override void DoUpdate()
+        {
+            if (_shared.LevelStage == LevelStage.Spawners)
             {
-                CalculateNextSpawn();
+                if (Time.timeSinceLevelLoad > _timeNextSpawn)
+                {
+                    CalculateNextSpawn();
 
 
-                var clone = Instantiate(_spawnerConfig.Prefab);
-                clone.transform.position = _boundaries.GetRandom2DPosition();
+                    var clone_enemy = Instantiate(_spawnerConfig.Prefab);
+                    clone_enemy.transform.position = _boundaries.GetRandom2DPosition();
 
+                    //Enemy_scriptable[] all_enm_scriptables = Resources.LoadAll<Enemy_scriptable>("Data/Enemies");
+
+                    //Set
+                    //clone_enemy.GetComponent<BaseEnemy>().Configure_enemy(all_enm_scriptables[Random.Range(0, all_enm_scriptables.Length)]);
+                }
             }
         }
     }

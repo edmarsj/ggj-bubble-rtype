@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,10 +26,13 @@ public class Bullet : PausableBehaviour
 
     #region Core
 
-    internal void Configure_bullet(GameObject parent)
+    internal void Configure_bullet(GameObject parent, float bullet_charge)
     {
         //Set
         bulletOwner = parent;
+
+        float max_bullet_size = 2;
+        this.gameObject.transform.localScale *= (1 + Mathf.Clamp(bullet_charge, 0, max_bullet_size));
     } 
 
     protected override void DoUpdate()

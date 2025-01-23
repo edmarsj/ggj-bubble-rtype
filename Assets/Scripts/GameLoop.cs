@@ -14,6 +14,9 @@ public class GameLoop : PausableBehaviour
             _shared.TotalPoints = 0;
             _newGame = false;
         }
+
+        //Set
+        _shared.Player_touch_worm_hole.AddListener(Change_level);
     }
 
     private void Start()
@@ -34,11 +37,12 @@ public class GameLoop : PausableBehaviour
             _shared.Boss = boss;
             _shared.OnBeginBossBattle?.Invoke();
         }
+    }
 
-        if (_shared.BossDefeated)
-        {
-            _shared.CurrentLevel = _shared.CurrentLevel.NextLevel;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+    private void Change_level()
+    {
+        //Set
+        _shared.CurrentLevel = _shared.CurrentLevel.NextLevel;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

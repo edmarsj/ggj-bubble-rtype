@@ -22,12 +22,17 @@ MonoBehaviour:
   <Spawners>k__BackingField:
   - <Id>k__BackingField: 0
     <RateMinute>k__BackingField: 10
-    <Prefab>k__BackingField: {fileID: 883049057742373826, guid: b43e689d42ccf964593a55240681838a, type: 3}
+    <Prefab>k__BackingField: {fileID: 8190953616151918008, guid: 8729a9aea1410e64b90e27bb9c2b4935,
+      type: 3}
   - <Id>k__BackingField: 1
     <RateMinute>k__BackingField: 15
-    <Prefab>k__BackingField: {fileID: 883049057742373826, guid: b43e689d42ccf964593a55240681838a, type: 3}
+    <Prefab>k__BackingField: {fileID: 8190953616151918008, guid: 8729a9aea1410e64b90e27bb9c2b4935,
+      type: 3}
   - <Id>k__BackingField: 2
     <RateMinute>k__BackingField: 6
-    <Prefab>k__BackingField: {fileID: 883049057742373826, guid: b43e689d42ccf964593a55240681838a, type: 3}
-  <BossPrefab>k__BackingField: {fileID: 3152627809375481738, guid: 93e209a13153b9841bc3e3b2fa543ea9, type: 3}
-  <NextLevel>k__BackingField: {fileID: 11400000, guid: fcd17b6c83bc9d94cbb35f0ba513a7f4, type: 2}
+    <Prefab>k__BackingField: {fileID: 8190953616151918008, guid: 8729a9aea1410e64b90e27bb9c2b4935,
+      type: 3}
+  <BossPrefab>k__BackingField: {fileID: 3152627809375481738, guid: 93e209a13153b9841bc3e3b2fa543ea9,
+    type: 3}
+  <NextLevel>k__BackingField: {fileID: 11400000, guid: fcd17b6c83bc9d94cbb35f0ba513a7f4,
+    type: 2}

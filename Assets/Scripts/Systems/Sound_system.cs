@@ -36,6 +36,21 @@ namespace Game.Sounds
 
             new_obj.GetComponent<AudioSource>().Play();
         }
+
+        private static void CreateSound(string clipName, float volume, bool changePitch=false)
+        {
+            var newGo = new GameObject("New_sound/" + clipName);
+
+            var audioSource = newGo.AddComponent<AudioSource>();
+            audioSource.clip = Resources.Load<AudioClip>("Sounds/" + clipName);
+
+            if (changePitch)
+            {
+                audioSource.pitch = Random.Range(0.9f, 1.1f);
+            }
+
+            audioSource.Play();
+        }
     }
 }
 

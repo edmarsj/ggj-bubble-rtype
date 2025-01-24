@@ -1,3 +1,4 @@
+using StarTravellers.Utils;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +16,7 @@ namespace Game.Haptics
 
         private void OnDisable()
         {
+#if UNITY_EDITOR || !PLATFORM_WEBGL
             if (Gamepad.current != null)
             {
                 for (var i = 0; i < Gamepad.all.Count; i++)
@@ -22,6 +24,7 @@ namespace Game.Haptics
                     Gamepad.all[i].SetMotorSpeeds(0f, 0f);
                 }
             }
+#endif
         }
 
         public void LowRumble(float intensity, float duration) => StartCoroutine(Rumble(intensity, 0, duration));
@@ -29,6 +32,7 @@ namespace Game.Haptics
 
         private IEnumerator Rumble(float lowIntensity, float highIntensity, float duration)
         {
+#if UNITY_EDITOR || !PLATFORM_WEBGL
             if (Gamepad.current != null)
             {
                 Gamepad.current.SetMotorSpeeds(lowIntensity, highIntensity);
@@ -39,16 +43,24 @@ namespace Game.Haptics
                 //    Gamepad.all[i].SetMotorSpeeds(0f, 0f);
                 //}                
             }
+#else
+            yield return AnimationHelpers.WaitForEndOfFrame;
+#endif
+
         }
 
         public void StartRumble(float lowIntensity, float highIntensity)
         {
+#if UNITY_EDITOR || !PLATFORM_WEBGL
             Gamepad.current.SetMotorSpeeds(lowIntensity, highIntensity);
+#endif
         }
 
         public void StopRumble()
         {
+#if UNITY_EDITOR || !PLATFORM_WEBGL
             Gamepad.current.SetMotorSpeeds(0f, 0f);
+#endif
         }
     }
 }

@@ -16,6 +16,7 @@ TagManager:
   - Rocket
   - Despawn
   - Worm_hole
+  - BossReadyPoint
   layers:
   - Default
   - TransparentFX

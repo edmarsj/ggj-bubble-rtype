@@ -30,9 +30,22 @@ namespace Game.Enemies
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Despawn"))
+            switch (collision.tag)
             {
-                Destroy(gameObject);
+                case "Despawn":
+                    {
+                        Destroy(gameObject);
+                        break;
+                    }
+                case "BossReadyPoint":
+                    {
+                        Destroy(collision.gameObject);
+                        _shared.LevelStage = GameplayStage.BossFight;
+                        _shared.OnBeginBossBattle?.Invoke();
+                        break;
+                    }
+                default:
+                    break;
             }
         }
 
@@ -47,7 +60,7 @@ namespace Game.Enemies
         {
             _rb = GetComponent<Rigidbody2D>();
             _damageable = GetComponent<Damageable>();
-            _damageable.OnDie.AddListener(OnDestroyed);
+            _damageable.OnDie.AddListener(OnDestroyed);            
         }
 
         #region Core
@@ -58,17 +71,14 @@ namespace Game.Enemies
             _shared.AddScore(_points);
             _shared.BossDefeated = true;
 
-            _shared.OnEndBossBattle.Invoke();
-
-            //Drop worm hole
-            var worm_hole = Instantiate(Resources.Load("Prefabs/Map/Worm_hole"), transform.position, Quaternion.identity);
+            _shared.OnEndBossBattle.Invoke();           
         }
 
         protected override void DoUpdate()
         {
             _velocity = Vector2.left * _speed;
 
-            if (Time.timeSinceLevelLoad > _timeNextShot)
+            if (Time.timeSinceLevelLoad > _timeNextShot && _shared.LevelStage == GameplayStage.BossFight)
             {
                 CalculateNextShot();
                 Shoot();

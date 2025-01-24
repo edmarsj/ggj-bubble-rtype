@@ -34,7 +34,7 @@ namespace Game
 
         protected override void DoUpdate()
         {
-            if (_shared.LevelStage == LevelStage.Spawners)
+            if (_shared.LevelStage == GameplayStage.Spawners)
             {
                 if (Time.timeSinceLevelLoad > _timeNextSpawn)
                 {

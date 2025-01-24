@@ -118,6 +118,12 @@ namespace StarTravellers.Utils
         public static IEnumerator Delay(float time)
         {
             yield return new WaitForSeconds(time);
-        }       
+        }
+
+        public static IEnumerator Action(Action action)
+        {
+            action();
+            yield return WaitForEndOfFrame;
+        }
     }
 }

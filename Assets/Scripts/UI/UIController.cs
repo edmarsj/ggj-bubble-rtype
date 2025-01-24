@@ -1,3 +1,5 @@
+using StarTravellers.Utils;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,15 +15,50 @@ namespace Game.UI
         [SerializeField] private CanvasGroup _cgBoss;
         [SerializeField] private TMP_Text _txtBossName;
         [SerializeField] private Image _imgBossGauge;
+        [SerializeField] private CanvasGroup _cgAlert;
 
-        private void Start()
+        [Header("Transition")]
+        [SerializeField] private Image[] _transitionImages;
+
+
+        private void Awake()
         {
             _shared.OnBeginBossBattle.AddListener(OnBeginBossBattle);
             _shared.OnEndBossBattle.AddListener(OnEndBossBattle);
+            _shared.FadeInScreen.AddListener(OnFadeInScreen);
+            _shared.FadeOutScreen.AddListener(OnFadeOutScreen);
 
             _txtLevelName.text = _shared.CurrentLevel.LevelName;
             _txtPoints.text = _shared.TotalPoints.ToString();
             _cgBoss.alpha = 0f;
+            _cgAlert.alpha = 0f;
+
+            foreach (var image in _transitionImages)
+            {
+                image.fillAmount = 1f;
+            }
+        }
+
+        private void OnFadeOutScreen()
+        {
+            StartCoroutine(AnimationHelpers.SmoothLerp(f =>
+            {
+                foreach (var image in _transitionImages)
+                {
+                    image.fillAmount = f;
+                }
+            }, 0f, 1f, 1f));
+        }
+
+        private void OnFadeInScreen()
+        {
+            StartCoroutine(AnimationHelpers.SmoothLerp(f =>
+            {
+                foreach (var image in _transitionImages)
+                {
+                    image.fillAmount = f;
+                }
+            }, 1f, 0f, 1f));
         }
 
         #region Core
@@ -31,6 +68,7 @@ namespace Game.UI
             //Set
             _cgBoss.alpha = 1f;
             _txtBossName.text = _shared.Boss.DisplayName;
+            _cgAlert.alpha = 0f;
         }
 
         private void OnEndBossBattle()
@@ -53,6 +91,12 @@ namespace Game.UI
             {
                 _imgBossGauge.fillAmount = _shared.Boss.LifePercent;
             }
+
+            if (_shared.LevelStage == GameplayStage.BossPresentation)
+            {
+                _cgAlert.alpha = Mathf.PingPong(Time.timeSinceLevelLoad * 3f, 1f);
+            }
+
         }
     }
 }

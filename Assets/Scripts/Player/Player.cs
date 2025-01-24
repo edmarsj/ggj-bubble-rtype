@@ -7,6 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.UIElements;
 using System.Collections;
 using Game.Projectiles;
+using Game.Haptics;
 
 public class Player : PausableBehaviour
 {
@@ -20,6 +21,8 @@ public class Player : PausableBehaviour
     private Rigidbody2D _rb;
     private Vector2 _velocity = Vector2.zero;
     private Damageable _damageable;
+
+    private Material _mainMaterial;
 
     public float Life => _damageable.CurrentLife;
 
@@ -38,17 +41,6 @@ public class Player : PausableBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        switch (collision.tag)
-        {
-            case "Worm_hole":
-                //Call
-                _shared.Player_touch_worm_hole.Invoke();
-                break;
-        }
-    }
-
     #endregion
 
     private void Awake()
@@ -62,15 +54,17 @@ public class Player : PausableBehaviour
         _damageable = GetComponent<Damageable>();
         _damageable.OnDie.AddListener(OnPlayerDie);
         _damageable.OnTakeDamage.AddListener(OnTakeDamage);
-        _mainRenderer.sharedMaterial.SetFloat("_MaskStage", 0f);
+        _mainMaterial = _mainRenderer.material;
+        _mainMaterial.SetFloat("_MaskStage", 0f);
     }
 
     private void OnTakeDamage()
     {
+        HapticsSystem.Instance.HighRumble(2f, .1f);
         StartCoroutine(AnimationHelpers.AnimationSequence(new Func<IEnumerator>[]
         {
-                () => AnimationHelpers.SmoothLerp(f => _mainRenderer.sharedMaterial.SetFloat("_MaskStage",f),0,1,.05f),
-                () => AnimationHelpers.SmoothLerp(f => _mainRenderer.sharedMaterial.SetFloat("_MaskStage",f),1,0,.1f),
+                () => AnimationHelpers.SmoothLerp(f => _mainMaterial.SetFloat("_MaskStage",f),0,1,.05f),
+                () => AnimationHelpers.SmoothLerp(f => _mainMaterial.SetFloat("_MaskStage",f),1,0,.1f),
         }));
     }
     private void OnPlayerDie()
@@ -80,6 +74,12 @@ public class Player : PausableBehaviour
 
     protected override void DoUpdate()
     {
+        // During wormhole player can't do anything
+        if (_shared.LevelStage == GameplayStage.Wormhole)
+        {
+            return;
+        }
+
         var levelModificators = _shared.CurrentLevel.Modificators;
 
         var vertical = Input.GetAxisRaw("Vertical") * levelModificators.Vertical;
@@ -88,6 +88,14 @@ public class Player : PausableBehaviour
         _velocity = levelModificators.InvertControls ? new Vector2(vertical, horizontal)
                                                       : new Vector2(horizontal, vertical);
 
+
+        // During boss presentation the player can't shoot
+        if (_shared.LevelStage == GameplayStage.BossPresentation)
+        {
+            bullet_charge = 0f;
+            return;
+        }
+
         //Inputs
         if (Input.GetButtonDown("Fire1"))
         {
@@ -95,7 +103,7 @@ public class Player : PausableBehaviour
             bullet_charge = 0;
         }
         else if (Input.GetButtonUp("Fire1"))
-        {
+        {            
             //Call
             Shoot();
         }
@@ -104,7 +112,15 @@ public class Player : PausableBehaviour
         {
             //Set
             bullet_charge += Time.deltaTime;
+           
         }
+       
+        // Bullet charge rumble
+        if (bullet_charge >= .3f)
+        {
+            HapticsSystem.Instance.StartRumble(.5f * bullet_charge, .5f * bullet_charge);
+        }
+        
     }
 
     private void Shoot()
@@ -117,6 +133,10 @@ public class Player : PausableBehaviour
 
         //Sound
         Sound_system.Create_sound("Laser_shoot", 0.3f, true);
+
+        // Reset bullet charge
+        bullet_charge = 0f;
+        HapticsSystem.Instance.StopRumble();
     }
 
     private void FixedUpdate()

@@ -6,6 +6,7 @@ public class GameLoop : PausableBehaviour
     [SerializeField] private Transform _bossSpawnPoint;
     [SerializeField] private Level _firstLevel;
     private static bool _newGame = true;
+
     private void Awake()
     {       
         if (_newGame)
@@ -37,6 +38,8 @@ public class GameLoop : PausableBehaviour
             _shared.Boss = boss;
             _shared.OnBeginBossBattle?.Invoke();
         }
+
+        if (Input.GetButtonDown("Cancel")) { Back_to_menu(); }
     }
 
     private void Change_level()
@@ -44,5 +47,10 @@ public class GameLoop : PausableBehaviour
         //Set
         _shared.CurrentLevel = _shared.CurrentLevel.NextLevel;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void Back_to_menu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

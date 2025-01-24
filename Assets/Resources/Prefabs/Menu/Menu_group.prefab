@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 970669739020335524}
   - component: {fileID: 868145043855843212}
   - component: {fileID: 1237672976296597659}
+  - component: {fileID: 1368423704953097526}
   m_Layer: 5
   m_Name: Bt_quit
   m_TagString: Untagged
@@ -317,7 +318,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 868145043855843212}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.Menu.Menu_manager, Assembly-CSharp
+        m_MethodName: Quit_button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1368423704953097526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763467127228681379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c6933dc71e8e143ade483f6126d53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4167242412488544307
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +355,7 @@ GameObject:
   - component: {fileID: 7771166919527280035}
   - component: {fileID: 5465209529318188744}
   - component: {fileID: 4951858468772444555}
+  - component: {fileID: 546159451957325128}
   m_Layer: 5
   m_Name: Bt_settings
   m_TagString: Untagged
@@ -498,7 +524,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5465209529318188744}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.Menu.Menu_manager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &546159451957325128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167242412488544307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c6933dc71e8e143ade483f6126d53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4353690050159312300
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,6 +997,7 @@ GameObject:
   - component: {fileID: 1187986139678786191}
   - component: {fileID: 3402811333529474232}
   - component: {fileID: 8080068428057915357}
+  - component: {fileID: 1969960712505092604}
   m_Layer: 5
   m_Name: Bt_play
   m_TagString: Untagged
@@ -1115,7 +1166,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3402811333529474232}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.Menu.Menu_manager, Assembly-CSharp
+        m_MethodName: Play_button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1969960712505092604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986630375180467871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c6933dc71e8e143ade483f6126d53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7575490813698048307
 GameObject:
   m_ObjectHideFlags: 0

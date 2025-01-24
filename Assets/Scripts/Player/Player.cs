@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.UIElements;
 using System.Collections;
+using Game.Projectiles;
 
 public class Player : PausableBehaviour
 {

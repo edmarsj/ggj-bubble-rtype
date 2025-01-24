@@ -1,5 +1,6 @@
 using Game.Particles;
 using UnityEngine;
+using Game.Projectiles;
 
 namespace Game.Enemies
 {

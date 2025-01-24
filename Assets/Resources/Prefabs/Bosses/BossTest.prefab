@@ -40,10 +40,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8665071744027313164}
-  - component: {fileID: 3677552378669354414}
   - component: {fileID: 5116679320789830967}
-  - component: {fileID: 3152627809375481738}
   - component: {fileID: 6552728007842753577}
+  - component: {fileID: 3152627809375481738}
+  - component: {fileID: 3677552378669354414}
+  - component: {fileID: -1373521302451583013}
   m_Layer: 0
   m_Name: BossTest
   m_TagString: Untagged
@@ -68,23 +69,6 @@ Transform:
   - {fileID: 4979266829838587907}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3677552378669354414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5344253435056323950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ac8e3ab32768844eb66749a23d39038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MaxLife>k__BackingField: 10
-  <OnDie>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  <Dead>k__BackingField: 0
 --- !u!50 &5116679320789830967
 Rigidbody2D:
   serializedVersion: 5
@@ -112,30 +96,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3152627809375481738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5344253435056323950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb736c4916e52741807094c466c2ed8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shared: {fileID: 11400000, guid: cd406d8a5ce3905468ce5a9556335b87, type: 2}
-  <DisplayName>k__BackingField: The obliterator
-  _bulletOrigin: {fileID: 4979266829838587907}
-  _bulletPrefabs:
-  - {fileID: 2999316375368582409, guid: 3474fc376055201439af67a318ee7121, type: 3}
-  - {fileID: 8414396729240063825, guid: 424cabd337bc0ed4faeae23f9fd1afb4, type: 3}
-  - {fileID: 2653895566885577551, guid: 73e7e382ce1dbb34a9800800b9e9f984, type: 3}
-  _speed: 0.6
-  _points: 100
-  _minDelayBetweenShots: 0.5
-  _maxDelayBetweenShots: 2
-  _bulletCharge_value: 2
 --- !u!60 &6552728007842753577
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -183,9 +143,67 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 2.4441009, y: 1.9545574}
-      - {x: -2.1996775, y: -0.012227923}
+      - {x: -0.9870049, y: 0.015649607}
       - {x: 2.4564629, y: -1.9075516}
   m_UseDelaunayMesh: 0
+--- !u!114 &3152627809375481738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5344253435056323950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb736c4916e52741807094c466c2ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shared: {fileID: 11400000, guid: cd406d8a5ce3905468ce5a9556335b87, type: 2}
+  <DisplayName>k__BackingField: The obliterator
+  _bulletOrigin: {fileID: 4979266829838587907}
+  _bulletPrefabs:
+  - {fileID: 2999316375368582409, guid: 3474fc376055201439af67a318ee7121, type: 3}
+  - {fileID: 8414396729240063825, guid: 424cabd337bc0ed4faeae23f9fd1afb4, type: 3}
+  - {fileID: 2653895566885577551, guid: 73e7e382ce1dbb34a9800800b9e9f984, type: 3}
+  _speed: 1.6
+  _points: 100
+  _minDelayBetweenShots: 0.5
+  _maxDelayBetweenShots: 2
+  _bulletCharge_value: 2
+  _minDelayBetweenPowers: 3
+  _maxDelayBetweenPowers: 6
+--- !u!114 &3677552378669354414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5344253435056323950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac8e3ab32768844eb66749a23d39038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxLife>k__BackingField: 30
+  <OnDie>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnTakeDamage>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <Dead>k__BackingField: 0
+--- !u!114 &-1373521302451583013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5344253435056323950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9146112fed38c7d42a4607a345bb3334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6348739141782360098
 GameObject:
   m_ObjectHideFlags: 0

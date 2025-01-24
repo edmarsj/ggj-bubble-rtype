@@ -122,10 +122,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shared: {fileID: 11400000, guid: cd406d8a5ce3905468ce5a9556335b87, type: 2}
   Bullet_behaviour: 1
-  <Speed>k__BackingField: 40
+  <Speed>k__BackingField: 25
   <DurationSeconds>k__BackingField: 5
-  <TimeToActive>k__BackingField: 1
+  <TimeToActive>k__BackingField: 0.25
   <Damage>k__BackingField: 1
+  _lifeTime: 0
 --- !u!1 &6660452951426116474
 GameObject:
   m_ObjectHideFlags: 0

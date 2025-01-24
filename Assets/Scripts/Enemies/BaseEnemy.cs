@@ -7,7 +7,7 @@ namespace Game.Enemies
     {
         [Header("References")]
         [SerializeField] private Transform _bulletOrigin;
-        [SerializeField] private Bullet _bulletPrefab;
+        [SerializeField] private Bullet[] _bulletPrefabs;
         private Enemy_scriptable _My_scriptable;
 
         [Header("Stats")]
@@ -115,7 +115,7 @@ namespace Game.Enemies
 
         private void Shoot()
         {
-            var bullet_clone = Instantiate(_bulletPrefab);
+            var bullet_clone = Instantiate(_bulletPrefabs[Random.Range(0, _bulletPrefabs.Length)]);
             bullet_clone.transform.position = _bulletOrigin.position;
             bullet_clone.transform.right = _bulletOrigin.right;
 

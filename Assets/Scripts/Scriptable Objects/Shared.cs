@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
+using Game.Enemies;
 
 [CreateAssetMenu(fileName = "Shared", menuName = "Scriptable Objects/Shared")]
 public class Shared : ScriptableObject

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Enemies;
 
 [CreateAssetMenu(fileName = "Level", menuName = "Scriptable Objects/Level")]
 public class Level : ScriptableObject

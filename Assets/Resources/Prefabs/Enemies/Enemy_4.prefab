@@ -232,8 +232,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shared: {fileID: 11400000, guid: cd406d8a5ce3905468ce5a9556335b87, type: 2}
   _bulletOrigin: {fileID: 6399344781798779613}
-  _bulletPrefab: {fileID: 2999316375368582409, guid: 3474fc376055201439af67a318ee7121,
-    type: 3}
+  _bulletPrefabs:
+  - {fileID: 2999316375368582409, guid: 3474fc376055201439af67a318ee7121, type: 3}
+  - {fileID: 8414396729240063825, guid: 424cabd337bc0ed4faeae23f9fd1afb4, type: 3}
+  - {fileID: 2653895566885577551, guid: 73e7e382ce1dbb34a9800800b9e9f984, type: 3}
   _speed: 6
   _points: 1
   _minDelayBetweenShots: 1

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : PausableBehaviour
@@ -75,6 +76,14 @@ public class Bullet : PausableBehaviour
                 //Set
                 damageable.TakeDamage(Damage);
                 Destroy(gameObject);
+            }
+            else if (_overlaping[i].TryGetComponent<Bullet>(out var other_bullet))
+            {
+                //Validate
+                if (other_bullet.GetComponent<Bullet>().bulletOwner == bulletOwner) { return; }
+
+                //Call
+                Destroy(this.gameObject);
             }
         }
     }

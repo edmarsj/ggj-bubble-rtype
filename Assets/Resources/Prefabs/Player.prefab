@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 461abe56239926f4db3e9d6e6c8985a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
   _speed: 20
   _bulletPrefab: {fileID: 2999316375368582409, guid: 3474fc376055201439af67a318ee7121,
     type: 3}
+  _mainRenderer: {fileID: 4390282365819752951}
 --- !u!61 &6120227880547030528
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -230,6 +231,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxLife>k__BackingField: 3
   <OnDie>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnTakeDamage>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
   <Dead>k__BackingField: 0

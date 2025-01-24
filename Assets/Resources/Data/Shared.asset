@@ -13,10 +13,18 @@ MonoBehaviour:
   m_Name: Shared
   m_EditorClassIdentifier: 
   <IsPaused>k__BackingField: 0
-  <CurrentLevel>k__BackingField: {fileID: 11400000, guid: 7b96351fa3e75c84a82b613920344a8d, type: 2}
+  <CurrentLevel>k__BackingField: {fileID: 11400000, guid: 7b96351fa3e75c84a82b613920344a8d,
+    type: 2}
   <TotalPoints>k__BackingField: 0
-  <LevelStage>k__BackingField: 0
+  <LevelStage>k__BackingField: 1
   <BossDefeated>k__BackingField: 0
   <OnBeginBossBattle>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
+  <OnEndBossBattle>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <Player_touch_worm_hole>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <ReachedBossTrigger>k__BackingField: 0

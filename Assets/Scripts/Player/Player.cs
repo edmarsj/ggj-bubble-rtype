@@ -1,19 +1,25 @@
 using Game.Sounds;
+using StarTravellers.Utils;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.UIElements;
+using System.Collections;
 
 public class Player : PausableBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform _bulletOrigin;
     [Header("Setup")]
-    [SerializeField] private float _speed;    
+    [SerializeField] private float _speed;
     [SerializeField] private Bullet _bulletPrefab;
+    [SerializeField] private SpriteRenderer _mainRenderer;
 
     private Rigidbody2D _rb;
     private Vector2 _velocity = Vector2.zero;
     private Damageable _damageable;
+
     public float Life => _damageable.CurrentLife;
 
     private float bullet_charge;
@@ -22,7 +28,7 @@ public class Player : PausableBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch(collision.collider.tag)
+        switch (collision.collider.tag)
         {
             case "Enemy":
                 //Set
@@ -33,7 +39,7 @@ public class Player : PausableBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch(collision.tag)
+        switch (collision.tag)
         {
             case "Worm_hole":
                 //Call
@@ -51,11 +57,21 @@ public class Player : PausableBehaviour
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();       
+        _rb = GetComponent<Rigidbody2D>();
         _damageable = GetComponent<Damageable>();
         _damageable.OnDie.AddListener(OnPlayerDie);
+        _damageable.OnTakeDamage.AddListener(OnTakeDamage);
+        _mainRenderer.sharedMaterial.SetFloat("_MaskStage", 0f);
     }
 
+    private void OnTakeDamage()
+    {
+        StartCoroutine(AnimationHelpers.AnimationSequence(new Func<IEnumerator>[]
+        {
+                () => AnimationHelpers.SmoothLerp(f => _mainRenderer.sharedMaterial.SetFloat("_MaskStage",f),0,1,.05f),
+                () => AnimationHelpers.SmoothLerp(f => _mainRenderer.sharedMaterial.SetFloat("_MaskStage",f),1,0,.1f),
+        }));
+    }
     private void OnPlayerDie()
     {
         SceneManager.LoadScene("GameOver");
@@ -77,13 +93,13 @@ public class Player : PausableBehaviour
             //Set
             bullet_charge = 0;
         }
-        else if(Input.GetButtonUp("Fire1"))
+        else if (Input.GetButtonUp("Fire1"))
         {
             //Call
             Shoot();
         }
 
-        if(Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             //Set
             bullet_charge += Time.deltaTime;

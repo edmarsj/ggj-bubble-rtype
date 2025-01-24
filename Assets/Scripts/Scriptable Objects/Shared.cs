@@ -17,6 +17,7 @@ public class Shared : ScriptableObject
 
     public BossBase Boss { get; set; }
     public Player Player { get; set; }
+    [field: SerializeField] public bool ReachedBossTrigger { get; set; }
 
     internal void AddScore(int points)
     {

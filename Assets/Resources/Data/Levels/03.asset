@@ -19,6 +19,7 @@ MonoBehaviour:
     <Horizontal>k__BackingField: 1
     <InvertControls>k__BackingField: 0
     <SpeedScale>k__BackingField: 0.1
+  <LevelScrollSpeed>k__BackingField: 3
   <Spawners>k__BackingField:
   - <Id>k__BackingField: 0
     <RateMinute>k__BackingField: 10

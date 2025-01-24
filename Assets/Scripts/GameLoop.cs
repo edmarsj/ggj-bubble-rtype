@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameLoop : PausableBehaviour
-{
-    [SerializeField] private Transform _bossSpawnPoint;
+{    
     [SerializeField] private Level _firstLevel;
+    private Transform _bossSpawnPoint;
     private static bool _newGame = true;
 
     private void Awake()
@@ -25,16 +25,25 @@ public class GameLoop : PausableBehaviour
         _shared.LevelStage = LevelStage.Spawners;
         _shared.CurrentPointsOnLevel = 0;
         _shared.BossDefeated = false;
+        _shared.ReachedBossTrigger = false;
+
+        var subsceneName = $"Level{_shared.CurrentLevel.name}";
+
+        if (!SceneManager.GetSceneByName(subsceneName).isLoaded)
+        {
+            SceneManager.LoadScene(subsceneName, LoadSceneMode.Additive);
+        }
+        _bossSpawnPoint = GameObject.Find("BossSpawnPoint").transform;
     }
 
     protected override void DoUpdate()
     {
-        if (_shared.LevelStage == LevelStage.Spawners && _shared.CurrentPointsOnLevel >= _shared.CurrentLevel.PointsRequirement )
+        if (_shared.LevelStage == LevelStage.Spawners && _shared.ReachedBossTrigger)
         {
             _shared.LevelStage = LevelStage.Boss;
-            
+
             var boss = Instantiate(_shared.CurrentLevel.BossPrefab);
-            boss.transform.position = _bossSpawnPoint.position;            
+            boss.transform.position = _bossSpawnPoint.position;
             _shared.Boss = boss;
             _shared.OnBeginBossBattle?.Invoke();
         }

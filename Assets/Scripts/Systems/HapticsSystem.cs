@@ -52,14 +52,20 @@ namespace Game.Haptics
         public void StartRumble(float lowIntensity, float highIntensity)
         {
 #if UNITY_EDITOR || !PLATFORM_WEBGL
-            Gamepad.current.SetMotorSpeeds(lowIntensity, highIntensity);
+            if (Gamepad.current != null)
+            {
+                Gamepad.current.SetMotorSpeeds(lowIntensity, highIntensity);
+            }
 #endif
         }
 
         public void StopRumble()
         {
 #if UNITY_EDITOR || !PLATFORM_WEBGL
-            Gamepad.current.SetMotorSpeeds(0f, 0f);
+            if (Gamepad.current != null)
+            {
+                Gamepad.current.SetMotorSpeeds(0f, 0f);
+            }
 #endif
         }
     }

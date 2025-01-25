@@ -51,7 +51,7 @@ namespace Game.Gameplay
 
         private void Update()
         {
-            _bgMaterial.SetFloat("_Time_Scale", .2f * _shared.CurrentLevel.LevelScrollSpeed);
+            _bgMaterial.SetFloat("_Time_Scale", .1f * _shared.CurrentLevel.LevelScrollSpeed);
             _mainContent.Translate(Vector2.left * _shared.CurrentLevel.LevelScrollSpeed * Time.deltaTime);
         }
 

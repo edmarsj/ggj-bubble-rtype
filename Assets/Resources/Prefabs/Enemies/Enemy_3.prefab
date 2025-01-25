@@ -217,6 +217,10 @@ MonoBehaviour:
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
+  <OnTakeDamage>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <IsPaused>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &5534897171299741783
 MonoBehaviour:
@@ -242,6 +246,7 @@ MonoBehaviour:
   _maxDelayBetweenShots: 3
   _canDrop_powerUps: 1
   _powerUp_drop_chance: 1
+  _moveWhenEnabled: 1
 --- !u!50 &6527363626778030435
 Rigidbody2D:
   serializedVersion: 5

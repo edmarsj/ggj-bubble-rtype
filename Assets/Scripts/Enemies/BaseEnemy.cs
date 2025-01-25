@@ -20,19 +20,33 @@ namespace Game.Enemies
         [SerializeField] private bool _canDrop_powerUps;
         [Range(0f, 1f)]
         [SerializeField] private float _powerUp_drop_chance;
+        [SerializeField] private bool _moveWhenEnabled = false;
+
+
 
         private Rigidbody2D _rb;
         private SpriteRenderer Render;
         private Vector2 _velocity;
         private Damageable _damageable;
         private float _timeNextShot;
+        private bool _enemyActivated = false;
 
         #region Triggers
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Despawn"))
+            switch (collision.tag)
             {
-                Destroy(gameObject);
+                case "EnemyActivator":
+                    CalculateNextShot();
+                    _damageable.IsPaused = false;
+                    _enemyActivated = true;
+                    break;
+                case "Despawn":
+                    Destroy(gameObject);
+                    break;
+
+                default:
+                    break;
             }
         }
 
@@ -50,6 +64,7 @@ namespace Game.Enemies
             Render = this.GetComponentInChildren<SpriteRenderer>();
             _damageable = GetComponent<Damageable>();
             _damageable.OnDie.AddListener(OnDestroyed);
+            _damageable.IsPaused = true;
             CalculateNextShot();
         }
 
@@ -73,7 +88,7 @@ namespace Game.Enemies
         {
             _velocity = Vector2.left * _speed;
 
-            if (Time.timeSinceLevelLoad > _timeNextShot)
+            if (_enemyActivated && Time.timeSinceLevelLoad > _timeNextShot)
             {
                 CalculateNextShot();
                 Shoot();
@@ -128,8 +143,8 @@ namespace Game.Enemies
         {
             float c = Random.Range(0f, 1f);
 
-            if (c <= _powerUp_drop_chance) 
-            { 
+            if (c <= _powerUp_drop_chance)
+            {
                 var power_up_clone = Instantiate(Resources.Load("Prefabs/Map/Power_up"), transform.position, Quaternion.identity);
             }
         }
@@ -138,7 +153,10 @@ namespace Game.Enemies
 
         private void FixedUpdate()
         {
-            _rb.linearVelocity = _velocity;
+            if (_moveWhenEnabled && _enemyActivated)
+            {
+                _rb.linearVelocity = _velocity;
+            }
         }
     }
 }

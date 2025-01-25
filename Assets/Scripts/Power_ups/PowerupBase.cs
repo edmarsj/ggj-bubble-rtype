@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game.PowerUps
@@ -13,14 +14,15 @@ namespace Game.PowerUps
             switch(collision.tag)
             {
                 case "Player":
-                    Destroy(this.gameObject);
+                    ConsumePowerUp(collision.GetComponent<Player>());
+                    Destroy(this.gameObject);                    
                     break;
 
                 case "Enemy":
                     Destroy(this.gameObject);
                     break;
             }
-        }
+        }       
 
         #endregion
 
@@ -28,6 +30,13 @@ namespace Game.PowerUps
         {
             _rbd2 = GetComponent<Rigidbody2D>();
         }
+
+        #region Powerups actions
+        private void ConsumePowerUp(Player player)
+        {
+            player.Damageable.AddLife(1);
+        }
+        #endregion
 
         #region Core
 

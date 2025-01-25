@@ -17,6 +17,8 @@ TagManager:
   - Despawn
   - Worm_hole
   - BossReadyPoint
+  - EnemyActivator
+  - Obstacle
   layers:
   - Default
   - TransparentFX

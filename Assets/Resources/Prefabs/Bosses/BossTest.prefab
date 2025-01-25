@@ -160,11 +160,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shared: {fileID: 11400000, guid: cd406d8a5ce3905468ce5a9556335b87, type: 2}
   <DisplayName>k__BackingField: The obliterator
-  _bulletOrigin: {fileID: 4979266829838587907}
-  _bulletPrefabs:
-  - {fileID: 2999316375368582409, guid: 3474fc376055201439af67a318ee7121, type: 3}
-  - {fileID: 8414396729240063825, guid: 424cabd337bc0ed4faeae23f9fd1afb4, type: 3}
-  - {fileID: 2653895566885577551, guid: 73e7e382ce1dbb34a9800800b9e9f984, type: 3}
   _speed: 1.6
   _points: 100
   _minDelayBetweenShots: 0.5
@@ -172,6 +167,12 @@ MonoBehaviour:
   _bulletCharge_value: 2
   _minDelayBetweenPowers: 3
   _maxDelayBetweenPowers: 6
+  _bulletOrigin: {fileID: 4979266829838587907}
+  _bulletPrefabs:
+  - {fileID: 2999316375368582409, guid: 3474fc376055201439af67a318ee7121, type: 3}
+  - {fileID: 8414396729240063825, guid: 424cabd337bc0ed4faeae23f9fd1afb4, type: 3}
+  - {fileID: 2653895566885577551, guid: 73e7e382ce1dbb34a9800800b9e9f984, type: 3}
+  _mainRenderer: {fileID: 128120986330423809}
 --- !u!114 &3677552378669354414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac8e3ab32768844eb66749a23d39038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxLife>k__BackingField: 30
+  <MaxLife>k__BackingField: 20
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -259,7 +260,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 461abe56239926f4db3e9d6e6c8985a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -2,17 +2,16 @@ using UnityEngine;
 using Game.Projectiles;
 using System.Collections;
 using Game.Super_powers;
+using StarTravellers.Utils;
 
 namespace Game.Enemies
 {
     public class BossBase : PausableBehaviour
     {
+
         [field: Header("Stats")]
         [field: SerializeField] public string DisplayName { get; set; }
-
-        [Space(10)]
-        [SerializeField] private Transform _bulletOrigin;
-        [SerializeField] private Bullet[] _bulletPrefabs;
+        
         [SerializeField] private float _speed;
         [SerializeField] private int _points;
         [Range(0f, 1f)]
@@ -27,14 +26,21 @@ namespace Game.Enemies
         [Range(0f, 10f)]
         [SerializeField] private float _maxDelayBetweenPowers;
 
+        [Space(10)]
+        [Header("References")]
+        [SerializeField] private Transform _bulletOrigin;
+        [SerializeField] private Bullet[] _bulletPrefabs;
+        [SerializeField] private SpriteRenderer _mainRenderer;
+
         private Rigidbody2D _rb;
         private Vector2 _velocity;
         private Damageable _damageable;
         private Super_powers_base _superpowers;
+        
 
         private float _timeNextShot;
         private bool _start_movements;
-
+        private Material _mainMaterial;
         public float LifePercent => _damageable.LifePercent;
 
         #region Triggers
@@ -79,10 +85,21 @@ namespace Game.Enemies
             _rb = GetComponent<Rigidbody2D>();
             _superpowers = this.gameObject.GetComponent<Super_powers_base>();
             _damageable = GetComponent<Damageable>();
-            _damageable.OnDie.AddListener(OnDestroyed);            
+            _damageable.OnDie.AddListener(OnDestroyed);
+            _damageable.OnTakeDamage.AddListener(OnTakeDamage);
+            _mainMaterial = _mainRenderer.material;
         }
 
         #region Core
+
+        private void OnTakeDamage()
+        {            
+            StartCoroutine(AnimationHelpers.AnimationSequence(new System.Func<IEnumerator>[]
+            {
+                () => AnimationHelpers.SmoothLerp(f => _mainMaterial.SetFloat("_MaskStage",f),0,1,.05f),
+                () => AnimationHelpers.SmoothLerp(f => _mainMaterial.SetFloat("_MaskStage",f),1,0,.1f),
+            }));
+        }
 
         private void OnDestroyed()
         {

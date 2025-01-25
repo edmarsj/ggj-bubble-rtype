@@ -17,16 +17,17 @@ public class Player : PausableBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private SpriteRenderer _mainRenderer;
+    [SerializeField] private ParticleSystem _chargeParticles;
 
     private Rigidbody2D _rb;
     private Vector2 _velocity = Vector2.zero;
-    private Damageable _damageable;
+    public Damageable Damageable { get; private set; }
 
     private Material _mainMaterial;
 
-    public float Life => _damageable.CurrentLife;
+    public float Life => Damageable.CurrentLife;
 
-    private float bullet_charge;
+    private float _bullet_charge;
 
     #region Triggers
 
@@ -36,7 +37,7 @@ public class Player : PausableBehaviour
         {
             case "Enemy":
                 //Set
-                _damageable.TakeDamage(1);
+                Damageable.TakeDamage(1);
                 break;
         }
     }
@@ -51,15 +52,22 @@ public class Player : PausableBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _damageable = GetComponent<Damageable>();
-        _damageable.OnDie.AddListener(OnPlayerDie);
-        _damageable.OnTakeDamage.AddListener(OnTakeDamage);
+        Damageable = GetComponent<Damageable>();
+        Damageable.OnDie.AddListener(OnPlayerDie);
+        Damageable.OnTakeDamage.AddListener(OnTakeDamage);
         _mainMaterial = _mainRenderer.material;
         _mainMaterial.SetFloat("_MaskStage", 0f);
+        StopChargeParticleEmission();
     }
 
     private void OnTakeDamage()
     {
+        // We don't want the player to take damage during wormhole transition
+        if (_shared.LevelStage == GameplayStage.Wormhole)
+        {
+            return;
+        }
+
         HapticsSystem.Instance.HighRumble(2f, .1f);
         StartCoroutine(AnimationHelpers.AnimationSequence(new Func<IEnumerator>[]
         {
@@ -69,6 +77,12 @@ public class Player : PausableBehaviour
     }
     private void OnPlayerDie()
     {
+        // We don't want the player to take damage during wormhole transition
+        if (_shared.LevelStage == GameplayStage.Wormhole)
+        {
+            return;
+        }
+
         SceneManager.LoadScene("GameOver");
     }
 
@@ -92,7 +106,7 @@ public class Player : PausableBehaviour
         // During boss presentation the player can't shoot
         if (_shared.LevelStage == GameplayStage.BossPresentation)
         {
-            bullet_charge = 0f;
+            _bullet_charge = 0f;
             return;
         }
 
@@ -100,28 +114,31 @@ public class Player : PausableBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             //Set
-            bullet_charge = 0;
+            _bullet_charge = 0;
         }
         else if (Input.GetButtonUp("Fire1"))
-        {            
-            //Call
+        {
+            StopChargeParticleEmission();
             Shoot();
         }
 
         if (Input.GetButton("Fire1"))
         {
             //Set
-            bullet_charge += Time.deltaTime;
-           
+            _bullet_charge += Time.deltaTime;
         }
-       
-        // Bullet charge rumble
-        if (bullet_charge >= .3f)
+
+        // Bullet charge
+        if (_bullet_charge >= .3f)
         {
-            HapticsSystem.Instance.StartRumble(.5f * bullet_charge, .5f * bullet_charge);
+            HapticsSystem.Instance.StartRumble(.5f * _bullet_charge, .5f * _bullet_charge);
+            UpdateChargeParticleEmission();
         }
-        
+
     }
+
+
+
 
     private void Shoot()
     {
@@ -129,13 +146,13 @@ public class Player : PausableBehaviour
         bullet_clone.transform.position = _bulletOrigin.position;
 
         //Set
-        bullet_clone.GetComponent<Bullet>().Configure_bullet(this.gameObject, bullet_charge);
+        bullet_clone.GetComponent<Bullet>().Configure_bullet(this.gameObject, _bullet_charge);
 
         //Sound
         Sound_system.Create_sound("Laser_shoot", 0.3f, true);
 
         // Reset bullet charge
-        bullet_charge = 0f;
+        _bullet_charge = 0f;
         HapticsSystem.Instance.StopRumble();
     }
 
@@ -143,5 +160,16 @@ public class Player : PausableBehaviour
     {
         var levelModificators = _shared.CurrentLevel.Modificators;
         _rb.linearVelocity = _velocity * _speed * levelModificators.SpeedScale;
+    }
+
+    private void StopChargeParticleEmission()
+    {
+        var emission = _chargeParticles.emission;
+        emission.rateOverTime = 0f;
+    }
+    private void UpdateChargeParticleEmission()
+    {
+        var emission = _chargeParticles.emission;
+        emission.rateOverTime = _bullet_charge * 10f;
     }
 }

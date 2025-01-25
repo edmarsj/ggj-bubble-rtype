@@ -19,10 +19,12 @@ namespace Game.Projectiles
         private Vector2 _velocity;
         private float _ttl;
         internal GameObject bulletOwner;
+        private bool _dead = false;
 
         //Components
         private Rigidbody2D _rb;
         private Collider2D _collider;
+
 
         private void Start()
         {
@@ -89,6 +91,11 @@ namespace Game.Projectiles
         private List<Collider2D> _overlaping = new();
         private void FixedUpdate()
         {
+            if (_dead)
+            {
+                return;
+            }
+
             _rb.linearVelocity = _velocity;
 
             var overlaped = Physics2D.OverlapCollider(_collider, _overlaping);
@@ -101,6 +108,7 @@ namespace Game.Projectiles
 
                     //Set
                     damageable.TakeDamage(Damage);
+                    _dead = true;
                     Destroy(gameObject);
                 }
                 else if (_overlaping[i].TryGetComponent<Bullet>(out var other_bullet))
@@ -108,6 +116,15 @@ namespace Game.Projectiles
                     //Validate
                     if (other_bullet.GetComponent<Bullet>().bulletOwner == bulletOwner) { return; }
 
+                    //Set
+                    _dead = true;
+                    //Call
+                    Destroy(this.gameObject);
+                }
+                else if (_overlaping[i].CompareTag("Obstacle"))
+                {
+                    //Set
+                    _dead = true;
                     //Call
                     Destroy(this.gameObject);
                 }

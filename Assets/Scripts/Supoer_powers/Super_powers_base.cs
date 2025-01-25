@@ -1,3 +1,4 @@
+using Game.Enemies;
 using System.Collections;
 using UnityEngine;
 
@@ -18,9 +19,10 @@ namespace Game.Super_powers
             }
         }
 
+
         private IEnumerator Laser_barrage()
         {
-            for (int i = 0; i < 5; i++) 
+            for (int i = 0; i < 5; i++)
             {
                 var laser_barrage_clone = Instantiate(Resources.Load("Prefabs/Bullets/Laser_barrage"), transform.position, Quaternion.identity);
 
@@ -31,6 +33,26 @@ namespace Game.Super_powers
         private void Explosive_wave()
         {
 
+        }
+
+        public void Use_super_power(PhaseConfig[] phases, float lifePercent)
+        {
+            PhaseConfig selected = null;
+
+            foreach (var phase in phases)
+            {
+                if (lifePercent <= phase.LifePerc)
+                {
+                    selected = phase;
+                }
+            }
+
+            if (selected != null)
+            {
+
+                var selectedPower = selected.SpecialPrefabs[Random.Range(0, selected.SpecialPrefabs.Length)];
+                Instantiate(selectedPower);
+            }
         }
     }
 }

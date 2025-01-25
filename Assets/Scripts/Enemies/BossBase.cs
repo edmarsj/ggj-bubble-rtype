@@ -11,19 +11,19 @@ namespace Game.Enemies
         [field: Header("Stats")]
         [field: SerializeField] public string DisplayName { get; set; }
         
-        [SerializeField] private float _speed;
+        [SerializeField] protected float _speed;
         [SerializeField] private int _points;
         [Range(0f, 1f)]
-        [SerializeField] private float _minDelayBetweenShots;
+        [SerializeField] protected float _minDelayBetweenShots;
         [Range(0f, 5f)]
-        [SerializeField] private float _maxDelayBetweenShots;
+        [SerializeField] protected float _maxDelayBetweenShots;
         [SerializeField] private float _bulletCharge_value;
 
         [Space(10)]
         [Range(0f, 3f)]
-        [SerializeField] private float _minDelayBetweenPowers;
+        [SerializeField] protected float _minDelayBetweenPowers;
         [Range(0f, 10f)]
-        [SerializeField] private float _maxDelayBetweenPowers;
+        [SerializeField] protected float _maxDelayBetweenPowers;
 
         [Space(10)]
         [Header("References")]
@@ -34,11 +34,11 @@ namespace Game.Enemies
         private Rigidbody2D _rb;
         private Vector2 _velocity;
         private Damageable _damageable;
-        private Super_powers_base _superpowers;
+        protected Super_powers_base _superpowers;
         
 
         private float _timeNextShot;
-        private bool _start_movements;
+        protected bool _start_movements;
         private Material _mainMaterial;
         public float LifePercent => _damageable.LifePercent;
 
@@ -137,7 +137,7 @@ namespace Game.Enemies
 
         #region Main functions
 
-        private IEnumerator Start_patern_movements()
+        protected virtual IEnumerator Start_patern_movements()
         {
             //Set
             float _newSpeed = _speed * 3;
@@ -167,7 +167,7 @@ namespace Game.Enemies
             }    
         }
 
-        private IEnumerator Randomize_behaviour_paterns()
+        protected virtual IEnumerator Randomize_behaviour_paterns()
         {
             while (_start_movements)
             {

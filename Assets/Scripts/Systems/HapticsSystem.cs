@@ -9,6 +9,10 @@ namespace Game.Haptics
     {
         public static HapticsSystem Instance { get; private set; }
 
+        private float _currentLowIntensity = 0f;
+        private float _currentHighIntensity = 0f;
+        private float _timeNextPulse = 0f;
+
         private void Awake()
         {
             Instance = this;
@@ -37,7 +41,7 @@ namespace Game.Haptics
             {
                 Gamepad.current.SetMotorSpeeds(lowIntensity, highIntensity);
                 yield return new WaitForSeconds(duration);
-                Gamepad.current.ResetHaptics();
+                Gamepad.current.SetMotorSpeeds(_currentLowIntensity, _currentHighIntensity);
                 //for (var i = 0; i < Gamepad.all.Count;i++)
                 //{
                 //    Gamepad.all[i].SetMotorSpeeds(0f, 0f);
@@ -54,7 +58,10 @@ namespace Game.Haptics
 #if UNITY_EDITOR || !PLATFORM_WEBGL
             if (Gamepad.current != null)
             {
-                Gamepad.current.SetMotorSpeeds(lowIntensity, highIntensity);
+                _currentHighIntensity = highIntensity;
+                _currentLowIntensity = lowIntensity;
+
+                Gamepad.current.SetMotorSpeeds(_currentLowIntensity, _currentHighIntensity);
             }
 #endif
         }
@@ -64,9 +71,28 @@ namespace Game.Haptics
 #if UNITY_EDITOR || !PLATFORM_WEBGL
             if (Gamepad.current != null)
             {
-                Gamepad.current.SetMotorSpeeds(0f, 0f);
+                _currentHighIntensity = 0f;
+                _currentLowIntensity = 0f;
+                Gamepad.current.SetMotorSpeeds(_currentLowIntensity, _currentHighIntensity);
             }
 #endif
         }
+
+
+        public void Pulse(float intensity)
+        {
+#if UNITY_EDITOR || !PLATFORM_WEBGL
+            if (Gamepad.current != null)
+            {
+                if (Time.timeSinceLevelLoad > _timeNextPulse)
+                {
+                    _timeNextPulse = Time.timeSinceLevelLoad + .6f;
+                    StartCoroutine(Rumble(intensity, intensity, .2f));
+                }
+            }
+#endif
+        }
+
+
     }
 }

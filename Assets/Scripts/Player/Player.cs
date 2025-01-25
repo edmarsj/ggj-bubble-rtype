@@ -113,22 +113,25 @@ public class Player : PausableBehaviour
             return;
         }
 
-        //Inputs
-        if (Input.GetButtonDown("Fire1"))
+        if (!levelModificators.CantShoot)
         {
-            //Set
-            _bullet_charge = 0;
-        }
-        else if (Input.GetButtonUp("Fire1"))
-        {
-            StopChargeParticleEmission();
-            Shoot();
-        }
+            //Inputs
+            if (Input.GetButtonDown("Fire1"))
+            {
+                //Set
+                _bullet_charge = 0;
+            }
+            else if (Input.GetButtonUp("Fire1"))
+            {
+                StopChargeParticleEmission();
+                Shoot();
+            }
 
-        if (Input.GetButton("Fire1"))
-        {
-            //Set
-            _bullet_charge += Time.deltaTime;
+            if (Input.GetButton("Fire1"))
+            {
+                //Set
+                _bullet_charge += Time.deltaTime;
+            }            
         }
 
         // Bullet charge
@@ -137,7 +140,6 @@ public class Player : PausableBehaviour
             HapticsSystem.Instance.StartRumble(.5f * _bullet_charge, .5f * _bullet_charge);
             UpdateChargeParticleEmission();
         }
-
     }
 
     private void Shoot()

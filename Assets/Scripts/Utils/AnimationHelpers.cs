@@ -107,6 +107,19 @@ namespace StarTravellers.Utils
             }
         }
 
+        public static IEnumerator SmoothTransformScale(Transform transform, Vector3 from, Vector3 to, float duration)
+        {
+            var step = 0f;
+            var speed = 1f / duration;
+
+            while (step < 1f)
+            {
+                step += Time.deltaTime * speed;
+                transform.localScale = Vector3.Lerp(from, to, step);
+                yield return WaitForFixedUpdate;
+            }
+        }
+
         public static IEnumerator AnimationSequence(Func<IEnumerator>[] sequence)
         {
             foreach (var item in sequence)

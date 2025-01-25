@@ -33,7 +33,7 @@ MonoBehaviour:
     <RateMinute>k__BackingField: 6
     <Prefab>k__BackingField: {fileID: 5126150757853307124, guid: 2287642fb0405e842ab6b14f3d8672b2,
       type: 3}
-  <BossPrefab>k__BackingField: {fileID: 3152627809375481738, guid: 93e209a13153b9841bc3e3b2fa543ea9,
+  <BossPrefab>k__BackingField: {fileID: 4457627108374535070, guid: 8fbbc520a44c2094e8dd1f736abc7f5d,
     type: 3}
   <NextLevel>k__BackingField: {fileID: 11400000, guid: ba54adf40b8e85d418cd992fac53a6a8,
     type: 2}

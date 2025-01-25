@@ -19,6 +19,7 @@ TagManager:
   - BossReadyPoint
   - EnemyActivator
   - Obstacle
+  - TrapArea
   layers:
   - Default
   - TransparentFX

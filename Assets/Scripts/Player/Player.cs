@@ -83,7 +83,8 @@ public class Player : PausableBehaviour
             return;
         }
 
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("Gameplay");
+        //SceneManager.LoadScene("GameOver");
     }
 
     protected override void DoUpdate()

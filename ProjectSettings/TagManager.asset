@@ -56,26 +56,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
+  - name: Background_1
     uniqueID: 1947543829
     locked: 0
-  - name: Planets
+  - name: Background_2
     uniqueID: 4094135763
     locked: 0
-  - name: Projectile
+  - name: Stage_1
     uniqueID: 1111697911
     locked: 0
-  - name: Enemy
+  - name: Stage_2
     uniqueID: 1152134415
     locked: 0
-  - name: Bonus
+  - name: Foreground_1
     uniqueID: 689362467
     locked: 0
-  - name: Player
+  - name: Foreground_2
     uniqueID: 2402381985
-    locked: 0
-  - name: VFX
-    uniqueID: 738997965
     locked: 0
   m_RenderingLayers:
   - Default

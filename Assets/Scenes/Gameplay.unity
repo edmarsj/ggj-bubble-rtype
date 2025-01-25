@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000015291574d38d07f4f72943420f2dac4423d61629a170318f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2721,11 +2721,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1343405160481663573, guid: 72dcffc0b3ab70344b285a2461a019a6,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4569434014438314520, guid: 72dcffc0b3ab70344b285a2461a019a6,
         type: 3}
       propertyPath: m_LocalPosition.x

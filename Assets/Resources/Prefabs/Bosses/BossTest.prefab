@@ -192,6 +192,7 @@ MonoBehaviour:
   <OnTakeDamage>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
+  <IsPaused>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &-1373521302451583013
 MonoBehaviour:
@@ -278,8 +279,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1111697911
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9731eae082186de439e5f70163f17d35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

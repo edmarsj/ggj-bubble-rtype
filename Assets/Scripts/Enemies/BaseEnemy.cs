@@ -1,6 +1,8 @@
 using Game.Particles;
 using UnityEngine;
 using Game.Projectiles;
+using StarTravellers.Utils;
+using System.Collections;
 
 namespace Game.Enemies
 {
@@ -30,6 +32,7 @@ namespace Game.Enemies
         private Damageable _damageable;
         private float _timeNextShot;
         private bool _enemyActivated = false;
+        private Material _mainMaterial;
 
         #region Triggers
         private void OnTriggerEnter2D(Collider2D collision)
@@ -64,11 +67,23 @@ namespace Game.Enemies
             Render = this.GetComponentInChildren<SpriteRenderer>();
             _damageable = GetComponent<Damageable>();
             _damageable.OnDie.AddListener(OnDestroyed);
+            _damageable.OnTakeDamage.AddListener(OnTakeDamage);
             _damageable.IsPaused = true;
+            _mainMaterial = Render.material;
+
             CalculateNextShot();
         }
 
         #region Core
+
+        private void OnTakeDamage()
+        {
+            StartCoroutine(AnimationHelpers.AnimationSequence(new System.Func<IEnumerator>[]
+            {
+                () => AnimationHelpers.SmoothLerp(f => _mainMaterial.SetFloat("_MaskStage",f),0,1,.05f),
+                () => AnimationHelpers.SmoothLerp(f => _mainMaterial.SetFloat("_MaskStage",f),1,0,.1f),
+            }));
+        }
 
         private void OnDestroyed()
         {

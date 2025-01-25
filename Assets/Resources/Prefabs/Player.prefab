@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1111697911
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a39f5d360eb38284fb54a62672b5ec9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -237,6 +237,7 @@ MonoBehaviour:
   <OnTakeDamage>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
+  <IsPaused>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!1 &6649913943489947912
 GameObject:
@@ -1108,7 +1109,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5116,6 +5117,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5824178790093274108, guid: bed2bbc425944a34f8f70a984b445fe5,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824178790093274108, guid: bed2bbc425944a34f8f70a984b445fe5,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1111697911
+      objectReference: {fileID: 0}
     - target: {fileID: 7498806457988930044, guid: bed2bbc425944a34f8f70a984b445fe5,
         type: 3}
       propertyPath: m_Name
@@ -5190,6 +5201,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4569434014438314520}
     m_Modifications:
+    - target: {fileID: 5824178790093274108, guid: bed2bbc425944a34f8f70a984b445fe5,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824178790093274108, guid: bed2bbc425944a34f8f70a984b445fe5,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1111697911
+      objectReference: {fileID: 0}
     - target: {fileID: 7498806457988930044, guid: bed2bbc425944a34f8f70a984b445fe5,
         type: 3}
       propertyPath: m_Name

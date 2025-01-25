@@ -2,10 +2,10 @@ using Game.Sounds;
 using StarTravellers.Utils;
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using Game.Projectiles;
 using Game.Haptics;
+using Game.Particles;
 
 public class Player : PausableBehaviour
 {
@@ -80,6 +80,11 @@ public class Player : PausableBehaviour
         {
             return;
         }
+
+        //Particles
+        Particle_system.Create_particle("Debris_particle", transform.position);
+
+        Destroy(gameObject);
 
         _shared.OnPlayerDie.Invoke();
     }

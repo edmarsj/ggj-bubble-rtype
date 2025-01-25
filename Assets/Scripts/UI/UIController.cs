@@ -16,6 +16,7 @@ namespace Game.UI
         [SerializeField] private TMP_Text _txtBossName;
         [SerializeField] private Image _imgBossGauge;
         [SerializeField] private CanvasGroup _cgAlert;
+        [SerializeField] private CanvasGroup _cgGameOver;
 
         [Header("Transition")]
         [SerializeField] private Image[] _transitionImages;
@@ -27,6 +28,7 @@ namespace Game.UI
             _txtPoints.text = _shared.TotalPoints.ToString();
             _cgBoss.alpha = 0f;
             _cgAlert.alpha = 0f;
+            _cgGameOver.alpha = 0f;
 
             foreach (var image in _transitionImages)
             {
@@ -40,14 +42,16 @@ namespace Game.UI
             _shared.OnEndBossBattle.AddListener(OnEndBossBattle);
             _shared.FadeInScreen.AddListener(OnFadeInScreen);
             _shared.FadeOutScreen.AddListener(OnFadeOutScreen);
+            _shared.OnPlayerDie.AddListener(OnPlayerDeath);
         }
-
+      
         private void OnDisable()
         {
             _shared.OnBeginBossBattle.RemoveListener(OnBeginBossBattle);
             _shared.OnEndBossBattle.RemoveListener(OnEndBossBattle);
             _shared.FadeInScreen.RemoveListener(OnFadeInScreen);
             _shared.FadeOutScreen.RemoveListener(OnFadeOutScreen);
+            _shared.OnPlayerDie.RemoveListener(OnPlayerDeath);
         }
 
         private void OnFadeOutScreen()
@@ -87,6 +91,12 @@ namespace Game.UI
             //Set
             _cgBoss.alpha = 0f;
         }
+        private void OnPlayerDeath()
+        {
+            _cgGameOver.alpha = 1f;
+            _txtLife.text = "0";
+        }
+
 
         #endregion
 

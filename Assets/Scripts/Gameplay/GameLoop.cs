@@ -9,6 +9,7 @@ namespace Game.Gameplay
     {
         [SerializeField] private Level _firstLevel;
         [SerializeField] private bool _isDebug;
+        [SerializeField] private float _gameOverdelaySeconds = 2f;
         private static bool _newGame = true;
 
 
@@ -21,7 +22,7 @@ namespace Game.Gameplay
                 _newGame = false;
             }
 
-            
+
         }
 
         private void OnEnable()
@@ -39,14 +40,13 @@ namespace Game.Gameplay
 
         private void OnPlayerDeath()
         {
-#if UNITY_EDITOR
-            if (_isDebug)
-            {
-                SceneManager.LoadScene("Gameplay");
-                return;
-            }
-#endif
-            SceneManager.LoadScene("GameOver");
+            Invoke(nameof(OnPlayerDeathDelayed), _gameOverdelaySeconds);
+        }
+
+        private void OnPlayerDeathDelayed()
+        {
+            SceneManager.LoadScene("Gameplay");
+            return;
         }
 
         private void Start()

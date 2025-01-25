@@ -50,6 +50,7 @@ public class Damageable : MonoBehaviour
 
     public void Kill()
     {
+        CurrentLife = 0f;
         Dead = true;
         OnDie?.Invoke();
     }

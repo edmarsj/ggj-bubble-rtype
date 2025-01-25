@@ -20,7 +20,7 @@ public class Damageable : MonoBehaviour
         CurrentLife = MaxLife;
     }
 
-    public void TakeDamage(int amt)
+    public void TakeDamage(float amt)
     {
         if (IsPaused)
         {

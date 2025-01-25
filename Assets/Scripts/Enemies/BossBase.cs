@@ -8,7 +8,6 @@ namespace Game.Enemies
 {
     public class BossBase : PausableBehaviour
     {
-
         [field: Header("Stats")]
         [field: SerializeField] public string DisplayName { get; set; }
         
@@ -214,12 +213,14 @@ namespace Game.Enemies
 
         private void Shoot()
         {
-            var bullet_clone = Instantiate(_bulletPrefabs[Random.Range(0, _bulletPrefabs.Length)]);
+            var selectedBulletPrefab = _bulletPrefabs[Random.Range(0, _bulletPrefabs.Length)];
+            var bullet_clone = PoolingSystem.Instance.Get<Bullet>(selectedBulletPrefab.name);
+                               
             bullet_clone.transform.position = _bulletOrigin.position;
             bullet_clone.transform.right = _bulletOrigin.right;
 
             //Set
-            bullet_clone.GetComponent<Bullet>().Configure_bullet(this.gameObject, _bulletCharge_value);
+            bullet_clone.Configure_bullet(this.gameObject, _bulletCharge_value);
         }
 
         private void Use_power(string power)

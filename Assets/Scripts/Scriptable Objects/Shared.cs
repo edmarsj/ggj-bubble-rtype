@@ -14,6 +14,7 @@ public class Shared : ScriptableObject
     [field: SerializeField] public UnityEvent OnBeginBossBattle { get; set; }
     [field: SerializeField] public UnityEvent OnEndBossBattle { get; set; }
     [field: SerializeField] public UnityEvent Player_touch_worm_hole { get; set; }
+    [field:SerializeField] public UnityEvent OnPlayerDie { get; set; }
 
     public BossBase Boss { get; set; }
     public Player Player { get; set; }    

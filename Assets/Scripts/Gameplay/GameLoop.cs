@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Game.Gameplay
@@ -6,7 +8,9 @@ namespace Game.Gameplay
     public class GameLoop : PausableBehaviour
     {
         [SerializeField] private Level _firstLevel;
+        [SerializeField] private bool _isDebug;
         private static bool _newGame = true;
+
 
         private void Awake()
         {
@@ -17,8 +21,32 @@ namespace Game.Gameplay
                 _newGame = false;
             }
 
+            
+        }
+
+        private void OnEnable()
+        {
             //Set
             _shared.Player_touch_worm_hole.AddListener(Change_level);
+            _shared.OnPlayerDie.AddListener(OnPlayerDeath);
+        }
+
+        private void OnDisable()
+        {
+            _shared.Player_touch_worm_hole.RemoveListener(Change_level);
+            _shared.OnPlayerDie.RemoveListener(OnPlayerDeath);
+        }
+
+        private void OnPlayerDeath()
+        {
+#if UNITY_EDITOR
+            if (_isDebug)
+            {
+                SceneManager.LoadScene("Gameplay");
+                return;
+            }
+#endif
+            SceneManager.LoadScene("GameOver");
         }
 
         private void Start()

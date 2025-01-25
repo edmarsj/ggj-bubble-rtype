@@ -22,12 +22,7 @@ namespace Game.UI
 
 
         private void Awake()
-        {
-            _shared.OnBeginBossBattle.AddListener(OnBeginBossBattle);
-            _shared.OnEndBossBattle.AddListener(OnEndBossBattle);
-            _shared.FadeInScreen.AddListener(OnFadeInScreen);
-            _shared.FadeOutScreen.AddListener(OnFadeOutScreen);
-
+        {            
             _txtLevelName.text = _shared.CurrentLevel.LevelName;
             _txtPoints.text = _shared.TotalPoints.ToString();
             _cgBoss.alpha = 0f;
@@ -37,6 +32,22 @@ namespace Game.UI
             {
                 image.fillAmount = 1f;
             }
+        }
+
+        private void OnEnable()
+        {
+            _shared.OnBeginBossBattle.AddListener(OnBeginBossBattle);
+            _shared.OnEndBossBattle.AddListener(OnEndBossBattle);
+            _shared.FadeInScreen.AddListener(OnFadeInScreen);
+            _shared.FadeOutScreen.AddListener(OnFadeOutScreen);
+        }
+
+        private void OnDisable()
+        {
+            _shared.OnBeginBossBattle.RemoveListener(OnBeginBossBattle);
+            _shared.OnEndBossBattle.RemoveListener(OnEndBossBattle);
+            _shared.FadeInScreen.RemoveListener(OnFadeInScreen);
+            _shared.FadeOutScreen.RemoveListener(OnFadeOutScreen);
         }
 
         private void OnFadeOutScreen()

@@ -3,8 +3,6 @@ using StarTravellers.Utils;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.DebugUI;
-using UnityEngine.UIElements;
 using System.Collections;
 using Game.Projectiles;
 using Game.Haptics;
@@ -83,8 +81,7 @@ public class Player : PausableBehaviour
             return;
         }
 
-        SceneManager.LoadScene("Gameplay");
-        //SceneManager.LoadScene("GameOver");
+        _shared.OnPlayerDie.Invoke();
     }
 
     protected override void DoUpdate()
@@ -138,16 +135,13 @@ public class Player : PausableBehaviour
 
     }
 
-
-
-
     private void Shoot()
     {
-        var bullet_clone = Instantiate(_bulletPrefab);
+        var bullet_clone = PoolingSystem.Instance.Get<Bullet>(_bulletPrefab.name);
         bullet_clone.transform.position = _bulletOrigin.position;
 
         //Set
-        bullet_clone.GetComponent<Bullet>().Configure_bullet(this.gameObject, _bullet_charge);
+        bullet_clone.Configure_bullet(this.gameObject, _bullet_charge);
 
         //Sound
         Sound_system.Create_sound("Laser_shoot", 0.3f, true);

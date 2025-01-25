@@ -19,10 +19,20 @@ namespace Game.Gameplay
         private void Start()
         {
             _bgMaterial = _bgRenderer.material;
+            _bgMaterial.SetInt("_InPlayMode", 1);
             _shared.BossSpawnPosition = _bossSpawnPosition;
+            _wormhole.SetActive(false);
+        }
+
+        private void OnEnable()
+        {
             _shared.OnBeginBossBattle.AddListener(OnBeginBossBattle);
             _shared.OnEndBossBattle.AddListener(OnEndBossBattle);
-            _wormhole.SetActive(false);
+        }
+        private void OnDisable()
+        {
+            _shared.OnBeginBossBattle.RemoveListener(OnBeginBossBattle);
+            _shared.OnEndBossBattle.RemoveListener(OnEndBossBattle);
         }
 
         private void OnBeginBossBattle()
@@ -58,7 +68,7 @@ namespace Game.Gameplay
         public void StartBossBattle()
         {
             _shared.LevelStage = GameplayStage.SpawnBoss;
-            HapticsSystem.Instance.StartRumble(.3f,.3f);
+            HapticsSystem.Instance.StartRumble(.3f, .3f);
         }
     }
 }

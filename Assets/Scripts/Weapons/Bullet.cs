@@ -1,8 +1,10 @@
+using Game.Pools;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Projectiles
 {
+    [RequireComponent(typeof(PoolableObject))]
     public class Bullet : PausableBehaviour
     {
         public enum Bullet_behaviours { Normal, Bi_divide, Tri_divide, Spike }
@@ -20,18 +22,32 @@ namespace Game.Projectiles
         private float _ttl;
         internal GameObject bulletOwner;
         private bool _dead = false;
+        private Vector3 _initialLocalScale;
 
         //Components
         private Rigidbody2D _rb;
         private Collider2D _collider;
+        private PoolableObject _poolableObject;
+        private float _damageMultiplier = 1f;
 
+        private void Awake()
+        {
+            _initialLocalScale = transform.localScale;
+        }
 
         private void Start()
         {
             //Set
             _rb = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
+            _poolableObject = GetComponent<PoolableObject>();
+
+        }
+
+        private void OnEnable()
+        {
             _ttl = Time.timeSinceLevelLoad + DurationSeconds;
+            _dead = false;
         }
 
         #region Core
@@ -40,9 +56,10 @@ namespace Game.Projectiles
         {
             //Set
             bulletOwner = parent;
+            _damageMultiplier = 1f + bullet_charge;
 
             float max_bullet_size = 2;
-            this.gameObject.transform.localScale *= (1 + Mathf.Clamp(bullet_charge, 0, max_bullet_size));
+            this.gameObject.transform.localScale = _initialLocalScale * Mathf.Clamp(bullet_charge, 1f, max_bullet_size);
         }
 
         internal void Configure_bullet(GameObject parent, float bullet_charge, Bullet_behaviours behaviour)
@@ -52,7 +69,7 @@ namespace Game.Projectiles
             Bullet_behaviour = behaviour;
 
             float max_bullet_size = 2;
-            this.gameObject.transform.localScale *= (1 + Mathf.Clamp(bullet_charge, 0, max_bullet_size));
+            this.gameObject.transform.localScale = _initialLocalScale * Mathf.Clamp(bullet_charge, 1f, max_bullet_size);
         }
 
         internal void Rotate_bullet(float angle)
@@ -107,9 +124,9 @@ namespace Game.Projectiles
                     if (damageable.gameObject == bulletOwner) { return; }
 
                     //Set
-                    damageable.TakeDamage(Damage);
+                    damageable.TakeDamage(Damage * _damageMultiplier);
                     _dead = true;
-                    Destroy(gameObject);
+                    _poolableObject.ReturnToCache();
                 }
                 else if (_overlaping[i].TryGetComponent<Bullet>(out var other_bullet))
                 {
@@ -119,14 +136,14 @@ namespace Game.Projectiles
                     //Set
                     _dead = true;
                     //Call
-                    Destroy(this.gameObject);
+                    _poolableObject.ReturnToCache();
                 }
                 else if (_overlaping[i].CompareTag("Obstacle"))
                 {
                     //Set
                     _dead = true;
                     //Call
-                    Destroy(this.gameObject);
+                    _poolableObject.ReturnToCache();
                 }
             }
         }
@@ -135,7 +152,7 @@ namespace Game.Projectiles
 
         private void Control_bullet_behaviour()
         {
-            if (_lifeTime >= TimeToActive) 
+            if (_lifeTime >= TimeToActive)
             {
                 switch (Bullet_behaviour)
                 {
@@ -163,14 +180,16 @@ namespace Game.Projectiles
 
             for (int i = 0; i < ammount; i++)
             {
-                var bullet_clone = Instantiate(this.gameObject);
+                var bullet_clone = PoolingSystem.Instance.Get<Bullet>(_poolableObject.CacheKey);
+                bullet_clone.transform.position = transform.position;
+                bullet_clone.transform.eulerAngles = transform.eulerAngles;
+                bullet_clone.transform.localScale = transform.localScale;
+                bullet_clone.Configure_bullet(bulletOwner, 0, Bullet_behaviours.Normal);
 
-                bullet_clone.GetComponent<Bullet>().Configure_bullet(bulletOwner, 0, Bullet_behaviours.Normal);
-
-                bullets_list.Add(bullet_clone.GetComponent<Bullet>());
+                bullets_list.Add(bullet_clone);
             }
 
-            switch(ammount)
+            switch (ammount)
             {
                 case 2:
                     bullets_list[0].Rotate_bullet(15);
@@ -191,7 +210,7 @@ namespace Game.Projectiles
                     break;
             }
 
-            Destroy(this.gameObject);
+            _poolableObject.ReturnToCache();
         }
 
         #endregion

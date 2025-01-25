@@ -1924,6 +1924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shared: {fileID: 11400000, guid: cd406d8a5ce3905468ce5a9556335b87, type: 2}
   _firstLevel: {fileID: 11400000, guid: 7b96351fa3e75c84a82b613920344a8d, type: 2}
+  _isDebug: 1
 --- !u!4 &1461733615
 Transform:
   m_ObjectHideFlags: 0
@@ -2418,7 +2419,8 @@ AudioSource:
   m_GameObject: {fileID: 1895292522}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1244343756171326752, guid: 89bb5d7e9d6ca1940992ec595460655c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: db6041827487f044fa6154b1fe547a89, type: 3}
   m_Resource: {fileID: 8300000, guid: db6041827487f044fa6154b1fe547a89, type: 3}
   m_PlayOnAwake: 1
@@ -2428,7 +2430,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2655,6 +2657,7 @@ GameObject:
   - component: {fileID: 2120778167}
   - component: {fileID: 2120778168}
   - component: {fileID: 2120778169}
+  - component: {fileID: 2120778170}
   m_Layer: 0
   m_Name: Aux_systems
   m_TagString: Untagged
@@ -2713,6 +2716,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9423d284df2bbb479c64912b46f2587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2120778170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120778165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b2c9de5be8b074694964a2b470e8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startSize: 5
+  _prefabs:
+  - {fileID: 1467265429582567532, guid: 10d2752b31beaef42a303f1f0f37bef5, type: 3}
+  - {fileID: 1506780656955975517, guid: 3474fc376055201439af67a318ee7121, type: 3}
+  - {fileID: 8651451437985698505, guid: 424cabd337bc0ed4faeae23f9fd1afb4, type: 3}
+  - {fileID: 5395567990643484996, guid: 73e7e382ce1dbb34a9800800b9e9f984, type: 3}
+  _currentCount: 0
 --- !u!1001 &753116201021572765
 PrefabInstance:
   m_ObjectHideFlags: 0

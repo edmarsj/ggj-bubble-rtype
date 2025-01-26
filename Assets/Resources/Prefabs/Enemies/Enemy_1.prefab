@@ -221,6 +221,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &486732432345961933
 MonoBehaviour:
@@ -245,7 +246,7 @@ MonoBehaviour:
   _minDelayBetweenShots: 1
   _maxDelayBetweenShots: 3
   _canDrop_powerUps: 1
-  _powerUp_drop_chance: 0.2
+  _powerUp_drop_chance: 0.3
   _moveWhenEnabled: 0
 --- !u!50 &5413024221021285662
 Rigidbody2D:

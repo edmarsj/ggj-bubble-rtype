@@ -1863,7 +1863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shared: {fileID: 11400000, guid: cd406d8a5ce3905468ce5a9556335b87, type: 2}
   _firstLevel: {fileID: 11400000, guid: 7b96351fa3e75c84a82b613920344a8d, type: 2}
-  _isDebug: 0
+  _isDebug: 1
   _gameOverdelaySeconds: 2
 --- !u!4 &1461733615
 Transform:

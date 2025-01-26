@@ -15,8 +15,7 @@ namespace Game.Gameplay
 
         private void Awake()
         {
-            //_shared.CurrentLevel = _firstLevel;
-            //_shared.TotalPoints = 0;
+            //_shared.CurrentLevel = _firstLevel;            
         }
 
 
@@ -25,6 +24,7 @@ namespace Game.Gameplay
             //Set
             _shared.Player_touch_worm_hole.AddListener(Change_level);
             _shared.OnPlayerDie.AddListener(OnPlayerDeath);
+            _shared.CurrentPointsOnLevel = 0;
         }
 
 
@@ -99,6 +99,7 @@ namespace Game.Gameplay
 
         private void Change_level()
         {
+            _shared.ConfirmScore();
             // Unlock next level
             PlayerPrefs.SetInt(_shared.CurrentLevel.NextLevel.name, 1);
 

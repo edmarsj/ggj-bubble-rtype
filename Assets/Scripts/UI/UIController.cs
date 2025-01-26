@@ -22,7 +22,7 @@ namespace Game.UI
         private void Awake()
         {
             _txtLevelName.text = _shared.CurrentLevel.LevelName;
-            _txtPoints.text = _shared.TotalPoints.ToString();
+            _txtPoints.text = _shared.CurrentPointsOnLevel.ToString();
             _cgBoss.alpha = 0f;
             _cgAlert.alpha = 0f;
             _cgGameOver.alpha = 0f;
@@ -68,7 +68,7 @@ namespace Game.UI
 
         private void Update()
         {
-            _txtPoints.text = _shared.TotalPoints.ToString();
+            _txtPoints.text = _shared.CurrentPointsOnLevel.ToString();
             if (_shared.Player)
             {
                 _txtLife.text = _shared.Player.Life.ToString();

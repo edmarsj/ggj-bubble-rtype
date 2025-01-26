@@ -29,9 +29,13 @@ public class Shared : ScriptableObject
 
     internal void AddScore(int points)
     {
-        //Set
-        TotalPoints += points;
+        //Set       
         CurrentPointsOnLevel += points;
+    }
+
+    public void ConfirmScore()
+    {
+        TotalPoints += CurrentPointsOnLevel;
     }
 
     [field: SerializeField] public UnityEvent FadeOutScreen { get; set; }

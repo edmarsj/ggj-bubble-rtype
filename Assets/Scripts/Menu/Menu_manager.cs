@@ -18,6 +18,12 @@ namespace Game.Menu
 
         }
 
+        public void Credits_button()
+        {
+            //Call
+            Load_scene("Credits");
+        }
+
         public void Quit_button() 
         { 
             Application.Quit();

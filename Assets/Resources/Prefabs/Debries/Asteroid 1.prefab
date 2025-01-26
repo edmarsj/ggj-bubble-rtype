@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac8e3ab32768844eb66749a23d39038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxLife>k__BackingField: 8
+  <MaxLife>k__BackingField: 6
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -198,7 +198,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
-  <Indestructible>k__BackingField: 1
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &7245492767905435011
 MonoBehaviour:
@@ -226,4 +226,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222f2e9e0d2e60f46b94c0218393e8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotation: {x: 0, y: 0, z: -7}
+  _rotation: {x: 0, y: 0, z: 25}

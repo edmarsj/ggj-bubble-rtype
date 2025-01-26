@@ -73,6 +73,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _Far_Multiplier: 0.3
     - _Front_Speed: 0.3
+    - _InPlayMode: 1
     - _Mid_Multiplier: 0.5
     - _Time_Scale: 0.2
     - _ZWrite: 0

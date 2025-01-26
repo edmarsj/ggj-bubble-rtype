@@ -16,13 +16,11 @@ namespace Game.Super_powers
         [SerializeField] private Transform _root;
         [SerializeField] private SpriteRenderer _mainRenderer;
         [SerializeField] private Collider2D _innerCollider;        
-
-        private LevelModificators _realLevelModificators;
+        
 
         private void Start()
         {
-            transform.parent = TrapArea.Instance.transform;
-            _realLevelModificators = _shared.CurrentLevel.Modificators.Copy();
+            transform.parent = TrapArea.Instance.transform;            
             StartCoroutine(AnimationHelpers.SmoothTransformScale(_root, Vector3.zero, Vector3.one, .3f));
             Invoke(nameof(DestroyTrap), _duration);
         }
@@ -64,7 +62,7 @@ namespace Game.Super_powers
         {
             if (_playerTraped && collision.CompareTag("Player"))
             {
-                var levelModificators = _shared.CurrentLevel.Modificators;
+                var levelModificators = _shared.CurrentModificators;
                 if (_innerCollider.OverlapPoint(collision.transform.position))
                 {
                     levelModificators.InvertControls = true;
@@ -85,7 +83,7 @@ namespace Game.Super_powers
 
         private void RestoreLevel()
         {
-            _shared.CurrentLevel.Modificators.Set(_realLevelModificators);
+            _shared.RestoreModificators();
         }
 
         private void DestroyTrap()

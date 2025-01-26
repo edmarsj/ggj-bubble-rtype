@@ -15,13 +15,10 @@ namespace Game.Super_powers
         [SerializeField] private float _duration = 10f;                
         [SerializeField] private Transform _root;
         [SerializeField] private SpriteRenderer _mainRenderer;
-
-        private LevelModificators _realLevelModificators;
-
+        
         private void Start()
         {
-            transform.parent = TrapArea.Instance.transform;
-            _realLevelModificators = _shared.CurrentLevel.Modificators.Copy();
+            transform.parent = TrapArea.Instance.transform;            
             StartCoroutine(AnimationHelpers.SmoothTransformScale(_root, Vector3.zero, Vector3.one, .3f));
             Invoke(nameof(DestroyTrap), _duration);
         }
@@ -51,7 +48,7 @@ namespace Game.Super_powers
             if (collision.CompareTag("Player"))
             {
                 _playerTraped = true;
-                _shared.CurrentLevel.Modificators.CantShoot = true;
+                _shared.CurrentModificators.CantShoot = true;
                 HapticsSystem.Instance.StartRumble(.5f, .5f);
             }
         }
@@ -75,7 +72,7 @@ namespace Game.Super_powers
 
         private void RestoreLevel()
         {
-            _shared.CurrentLevel.Modificators.Set(_realLevelModificators);
+            _shared.RestoreModificators();
             HapticsSystem.Instance.StopRumble();
         }
 

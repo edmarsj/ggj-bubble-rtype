@@ -8,6 +8,7 @@ namespace Game.Gameplay
 {
     public class LevelController : MonoBehaviour
     {
+        [field: SerializeField] public Level Level { get; set; }
         [SerializeField] private Shared _shared;
         [SerializeField] private Renderer _bgRenderer;
         [SerializeField] private Transform _mainContent;
@@ -61,7 +62,7 @@ namespace Game.Gameplay
 
         private void Update()
         {
-            _bgMaterial.SetFloat("_Time_Scale", .1f * _shared.CurrentLevel.LevelScrollSpeed);
+            _bgMaterial.SetFloat("_Time_Scale", .1f * Level.LevelScrollSpeed);
             _mainContent.Translate(Vector2.left * _shared.CurrentLevel.LevelScrollSpeed * Time.deltaTime);
         }
 

@@ -97,7 +97,7 @@ public class Player : PausableBehaviour
             return;
         }
 
-        var levelModificators = _shared.CurrentLevel.Modificators;
+        var levelModificators = _shared.CurrentModificators;
 
         var vertical = Input.GetAxisRaw("Vertical") * levelModificators.Vertical;
         var horizontal = Input.GetAxisRaw("Horizontal") * levelModificators.Horizontal;
@@ -132,7 +132,7 @@ public class Player : PausableBehaviour
             {
                 //Set
                 _bullet_charge += Time.deltaTime;
-            }            
+            }
         }
 
         // Bullet charge
@@ -161,7 +161,14 @@ public class Player : PausableBehaviour
 
     private void FixedUpdate()
     {
-        var levelModificators = _shared.CurrentLevel.Modificators;
+        // During wormhole player can't do anything
+        if (_shared.LevelStage == GameplayStage.Wormhole)
+        {
+            _rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        var levelModificators = _shared.CurrentModificators;
         _rb.linearVelocity = _velocity * _speed * levelModificators.SpeedScale;
     }
 

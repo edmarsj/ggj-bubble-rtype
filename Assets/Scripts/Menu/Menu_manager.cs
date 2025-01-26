@@ -9,8 +9,8 @@ namespace Game.Menu
 
         public void Play_button()
         {
-            //Call
-            Load_scene("Gameplay");
+            //Call           
+            Load_scene("LevelSelect");
         }
 
         public void Settings_button()

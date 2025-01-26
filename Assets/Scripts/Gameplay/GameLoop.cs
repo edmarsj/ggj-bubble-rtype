@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Game.Gameplay
@@ -10,20 +8,15 @@ namespace Game.Gameplay
         [SerializeField] private Level _firstLevel;
         [SerializeField] private bool _isDebug;
         [SerializeField] private float _gameOverdelaySeconds = 2f;
-        private static bool _newGame = true;
+
 
 
         private void Awake()
         {
-            if (_newGame)
-            {
-                _shared.CurrentLevel = _firstLevel;
-                _shared.TotalPoints = 0;
-                _newGame = false;
-            }
-
-
+            //_shared.CurrentLevel = _firstLevel;
+            //_shared.TotalPoints = 0;
         }
+
 
         private void OnEnable()
         {
@@ -31,6 +24,7 @@ namespace Game.Gameplay
             _shared.Player_touch_worm_hole.AddListener(Change_level);
             _shared.OnPlayerDie.AddListener(OnPlayerDeath);
         }
+
 
         private void OnDisable()
         {
@@ -52,20 +46,23 @@ namespace Game.Gameplay
         private void Start()
         {
             _shared.LevelStage = GameplayStage.Spawners;
-            _shared.CurrentPointsOnLevel = 0;
             _shared.BossDefeated = false;
 
 
             var subsceneName = $"Level{_shared.CurrentLevel.name}";
 
 #if UNITY_EDITOR
-            for (var i = 0; i < SceneManager.loadedSceneCount; i++)
+            if (_isDebug)
             {
-                var scene = SceneManager.GetSceneAt(i);
-                if (scene.name.StartsWith("Level"))
+                for (var i = 0; i < SceneManager.loadedSceneCount; i++)
                 {
-                    // this avoids trying to load the default first level instead of the level being edited 
-                    subsceneName = scene.name;
+                    var scene = SceneManager.GetSceneAt(i);
+                    if (scene.name.StartsWith("Level"))
+                    {
+                        // this avoids trying to load the default first level instead of the level being edited 
+                        subsceneName = scene.name;
+                        _shared.SetLevel(GameObject.FindFirstObjectByType<LevelController>().Level);
+                    }
                 }
             }
 #endif
@@ -102,9 +99,20 @@ namespace Game.Gameplay
 
         private void Change_level()
         {
-            //Set
-            _shared.CurrentLevel = _shared.CurrentLevel.NextLevel;
-            SceneManager.LoadScene("Gameplay");
+            // Unlock next level
+            PlayerPrefs.SetInt(_shared.CurrentLevel.NextLevel.name, 1);
+
+#if UNITY_EDITOR
+            if (_isDebug)
+            {
+                //Set
+                _shared.SetLevel(_shared.CurrentLevel);
+                SceneManager.LoadScene("Gameplay");
+                return;
+            }
+#endif
+
+            SceneManager.LoadScene("LevelSelect");
         }
 
         private void Back_to_menu()

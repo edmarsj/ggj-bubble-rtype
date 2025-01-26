@@ -559,6 +559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679fad234a0034445a0605190ec4031f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Level>k__BackingField: {fileID: 11400000, guid: ba54adf40b8e85d418cd992fac53a6a8,
+    type: 2}
   _shared: {fileID: 11400000, guid: cd406d8a5ce3905468ce5a9556335b87, type: 2}
   _bgRenderer: {fileID: 649316132}
   _mainContent: {fileID: 337553827}

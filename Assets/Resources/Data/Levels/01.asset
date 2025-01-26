@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b52ad9ffdcd3ef4e86f1d61b461dc4f, type: 3}
   m_Name: 01
   m_EditorClassIdentifier: 
-  <LevelName>k__BackingField: The begining
+  <LevelName>k__BackingField: "O Come\xE7o da aventura."
   <PointsRequirement>k__BackingField: 5
   <Modificators>k__BackingField:
     <Vertical>k__BackingField: 1
@@ -33,7 +33,7 @@ MonoBehaviour:
     <RateMinute>k__BackingField: 6
     <Prefab>k__BackingField: {fileID: 5126150757853307124, guid: 2287642fb0405e842ab6b14f3d8672b2,
       type: 3}
-  <BossPrefab>k__BackingField: {fileID: 4457627108374535070, guid: 8fbbc520a44c2094e8dd1f736abc7f5d,
+  <BossPrefab>k__BackingField: {fileID: 3152627809375481738, guid: 93e209a13153b9841bc3e3b2fa543ea9,
     type: 3}
   <NextLevel>k__BackingField: {fileID: 11400000, guid: ba54adf40b8e85d418cd992fac53a6a8,
     type: 2}

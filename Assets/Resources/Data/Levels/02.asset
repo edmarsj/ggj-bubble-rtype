@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b52ad9ffdcd3ef4e86f1d61b461dc4f, type: 3}
   m_Name: 02
   m_EditorClassIdentifier: 
-  <LevelName>k__BackingField: Front and back inverted?
+  <LevelName>k__BackingField: "Algo est\xE1 errado!"
   <PointsRequirement>k__BackingField: 5
   <Modificators>k__BackingField:
     <Vertical>k__BackingField: 1
@@ -33,7 +33,7 @@ MonoBehaviour:
     <RateMinute>k__BackingField: 6
     <Prefab>k__BackingField: {fileID: 8190953616151918008, guid: 8729a9aea1410e64b90e27bb9c2b4935,
       type: 3}
-  <BossPrefab>k__BackingField: {fileID: 3152627809375481738, guid: 93e209a13153b9841bc3e3b2fa543ea9,
+  <BossPrefab>k__BackingField: {fileID: 4457627108374535070, guid: 220ca42e404138e48bae8a55962f8e1b,
     type: 3}
   <NextLevel>k__BackingField: {fileID: 11400000, guid: fcd17b6c83bc9d94cbb35f0ba513a7f4,
     type: 2}

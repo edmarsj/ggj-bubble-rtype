@@ -13,9 +13,11 @@ namespace Game.Gameplay
         [field: SerializeField] public UnityEvent<bool> OnTriggerEnterOrReset { get; set; }
         [SerializeField] private bool _triggerOnce = true;
 
+
         [Space]
-        [Header("Debug")]       
+        [Header("Debug")]
         [SerializeField] private Color _debugColor;
+        private bool _triggered = false;
 
         private void Start()
         {
@@ -24,12 +26,19 @@ namespace Game.Gameplay
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (_triggered)
+            {
+                return;
+            }
+
             if (collision.CompareTag("Player"))
             {
-                OnTriggerEnter?.Invoke();
-                OnTriggerEnterOrReset?.Invoke(true);
                 if (_triggerOnce)
                 {
+                    _triggered = true;
+                    OnTriggerEnter?.Invoke();
+                    OnTriggerEnterOrReset?.Invoke(true);
+                 
                     // Deleta apenas o componente, deixando o GO intacto.
                     Destroy(this);
                 }
@@ -41,7 +50,7 @@ namespace Game.Gameplay
         {
             if (TryGetComponent<Collider2D>(out var collider))
             {
-                Gizmos.color = _debugColor;                
+                Gizmos.color = _debugColor;
                 Gizmos.DrawCube(collider.bounds.center, collider.bounds.size);
             }
         }

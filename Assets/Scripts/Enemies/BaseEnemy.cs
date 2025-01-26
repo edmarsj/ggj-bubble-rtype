@@ -3,6 +3,7 @@ using UnityEngine;
 using Game.Projectiles;
 using StarTravellers.Utils;
 using System.Collections;
+using Unity.VisualScripting;
 
 namespace Game.Enemies
 {
@@ -162,7 +163,10 @@ namespace Game.Enemies
 
             if (c <= _powerUp_drop_chance)
             {
-                var power_up_clone = Instantiate(Resources.Load("Prefabs/Map/Power_up"), transform.position, Quaternion.identity);
+                var power_up_clone = Instantiate(Resources.Load<GameObject>("Prefabs/Map/Power_up"));
+                power_up_clone.transform.parent = transform.parent;
+                power_up_clone.transform.position = transform.position;
+                power_up_clone.transform.rotation = Quaternion.identity;
             }
         }
 

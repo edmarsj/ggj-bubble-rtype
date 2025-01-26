@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5945382086976185513}
   - component: {fileID: 1991583029905083246}
   - component: {fileID: 9128458017916242611}
+  - component: {fileID: 2410610097534381244}
   m_Layer: 0
   m_Name: Power_up
   m_TagString: Untagged
@@ -199,4 +200,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shared: {fileID: 11400000, guid: cd406d8a5ce3905468ce5a9556335b87, type: 2}
   _ttl: 5
-  _spriteRenderer: {fileID: 4316733049907313791}
+--- !u!114 &2410610097534381244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771232610572529811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a0cdd6ee2d30a46a8382d3cb60b045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0.29
+  Dir: {x: 0.1, y: 0}

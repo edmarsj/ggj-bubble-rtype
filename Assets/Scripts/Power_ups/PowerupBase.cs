@@ -5,30 +5,32 @@ namespace Game.PowerUps
 {
     public class PowerupBase : PausableBehaviour
     {
+        [SerializeField] float _ttl;
         private Rigidbody2D _rbd2;
 
         #region Triggers
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            switch(collision.tag)
+            switch (collision.tag)
             {
                 case "Player":
                     ConsumePowerUp(collision.GetComponent<Player>());
-                    Destroy(this.gameObject);                    
+                    Destroy(this.gameObject);
                     break;
 
                 case "Enemy":
                     Destroy(this.gameObject);
                     break;
             }
-        }       
+        }
 
         #endregion
 
         private void Awake()
         {
             _rbd2 = GetComponent<Rigidbody2D>();
+            _ttl = Time.timeSinceLevelLoad + _ttl;
         }
 
         #region Powerups actions
@@ -47,12 +49,10 @@ namespace Game.PowerUps
 
         protected override void DoUpdate()
         {
-            _rbd2.linearVelocity = new Vector2(0, -3f);
 
-            //Out of bounds
-            if(transform.position.y <= -20)
+            if (Time.timeSinceLevelLoad > _ttl)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
 

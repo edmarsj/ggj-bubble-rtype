@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac8e3ab32768844eb66749a23d39038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxLife>k__BackingField: 20
+  <MaxLife>k__BackingField: 30
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls: []

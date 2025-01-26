@@ -2785,6 +2785,7 @@ MonoBehaviour:
   - {fileID: 1506780656955975517, guid: 3474fc376055201439af67a318ee7121, type: 3}
   - {fileID: 8651451437985698505, guid: 424cabd337bc0ed4faeae23f9fd1afb4, type: 3}
   - {fileID: 5395567990643484996, guid: 73e7e382ce1dbb34a9800800b9e9f984, type: 3}
+  - {fileID: 4834006266051858203, guid: 34bb2acdf2a8a724d97cd438c44e29bb, type: 3}
   _currentCount: 0
 --- !u!1001 &753116201021572765
 PrefabInstance:

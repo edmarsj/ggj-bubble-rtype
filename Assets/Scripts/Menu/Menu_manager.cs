@@ -20,7 +20,7 @@ namespace Game.Menu
 
         public void Settings_button()
         {
-
+            Load_scene("Settings");
         }
 
         public void Credits_button()

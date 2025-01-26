@@ -602,7 +602,8 @@ AudioSource:
   m_GameObject: {fileID: 2041044655}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1244343756171326752, guid: 89bb5d7e9d6ca1940992ec595460655c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 025e6d2fa3ef1b5468fa1d6deb3c52bd, type: 3}
   m_Resource: {fileID: 8300000, guid: 025e6d2fa3ef1b5468fa1d6deb3c52bd, type: 3}
   m_PlayOnAwake: 1
@@ -1002,6 +1003,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2062012223}
+    - target: {fileID: 5839081471133489328, guid: d8952dcfaecb98a4eb1557aef7be66c8,
+        type: 3}
+      propertyPath: m_text
+      value: the bubblle universe shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839081471133489328, guid: d8952dcfaecb98a4eb1557aef7be66c8,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 72.45
+      objectReference: {fileID: 0}
     - target: {fileID: 6660782069147885353, guid: d8952dcfaecb98a4eb1557aef7be66c8,
         type: 3}
       propertyPath: m_AnchorMax.y

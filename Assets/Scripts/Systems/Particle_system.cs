@@ -1,3 +1,4 @@
+using Game.Pools;
 using UnityEngine;
 
 namespace Game.Particles
@@ -6,8 +7,12 @@ namespace Game.Particles
     {
         public static void Create_particle(string particle_name, Vector2 pos)
         {
-            //Set
-            GameObject new_particle = Instantiate(Resources.Load("Prefabs/Particles/" + particle_name), pos, Quaternion.identity) as GameObject;
+            if (PoolingSystem.Instance)
+            {
+                var newParticle = PoolingSystem.Instance.Get<PoolableParticles>(particle_name);
+                newParticle.transform.position = pos;
+                newParticle.transform.rotation = Quaternion.identity;
+            }            
         }
     }
 }

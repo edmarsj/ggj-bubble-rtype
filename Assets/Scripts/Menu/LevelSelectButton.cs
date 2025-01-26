@@ -1,3 +1,5 @@
+using StarTravellers.Utils;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -42,6 +44,7 @@ public class LevelSelectButton : MonoBehaviour
     private void StartSelectedLevel()
     {
         _shared.SetLevel(_level);
-        SceneManager.LoadScene("Gameplay");
+
+        TransitionController.Instance.TransitionToScene("Gameplay");
     }
 }

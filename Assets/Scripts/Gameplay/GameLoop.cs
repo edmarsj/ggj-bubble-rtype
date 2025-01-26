@@ -1,3 +1,5 @@
+using StarTravellers.Utils;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,7 +41,7 @@ namespace Game.Gameplay
 
         private void OnPlayerDeathDelayed()
         {
-            SceneManager.LoadScene("Gameplay");
+            TransitionController.Instance.TransitionToScene("Gameplay");
             return;
         }
 
@@ -72,8 +74,6 @@ namespace Game.Gameplay
                 SceneManager.LoadScene(subsceneName, LoadSceneMode.Additive);
             }
 
-
-            _shared.FadeInScreen.Invoke();
         }
 
         protected override void DoUpdate()
@@ -107,17 +107,17 @@ namespace Game.Gameplay
             {
                 //Set
                 _shared.SetLevel(_shared.CurrentLevel);
-                SceneManager.LoadScene("Gameplay");
+                TransitionController.Instance.TransitionToScene("Gameplay",false);
+               
                 return;
             }
 #endif
-
-            SceneManager.LoadScene("LevelSelect");
+            TransitionController.Instance.TransitionToScene("LevelSelect", false);         
         }
 
         private void Back_to_menu()
         {
-            SceneManager.LoadScene("Menu");
+            TransitionController.Instance.TransitionToScene("LevelSelect");
         }
     }
 }

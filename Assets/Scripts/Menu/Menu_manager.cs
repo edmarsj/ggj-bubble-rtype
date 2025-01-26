@@ -1,3 +1,5 @@
+using StarTravellers.Utils;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,11 +7,14 @@ namespace Game.Menu
 {
     public class Menu_manager : MonoBehaviour
     {
+        [SerializeField] private Shared _shared;
+        
+
         #region Main functions
 
         public void Play_button()
         {
-            //Call           
+            //Call                     
             Load_scene("LevelSelect");
         }
 
@@ -24,8 +29,8 @@ namespace Game.Menu
             Load_scene("Credits");
         }
 
-        public void Quit_button() 
-        { 
+        public void Quit_button()
+        {
             Application.Quit();
         }
 
@@ -35,9 +40,9 @@ namespace Game.Menu
 
         private void Load_scene(string sceneName)
         {
-            //Call
-            SceneManager.LoadScene(sceneName);
+            TransitionController.Instance.TransitionToScene(sceneName);
         }
+
 
         #endregion
     }

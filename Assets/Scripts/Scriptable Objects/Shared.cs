@@ -12,7 +12,7 @@ public class Shared : ScriptableObject
     public int TotalPoints
     {
         get { return PlayerPrefs.GetInt(nameof(TotalPoints), 0); }
-        set { PlayerPrefs.GetInt(nameof(TotalPoints), value); }
+        set { PlayerPrefs.SetInt(nameof(TotalPoints), value); }
     }
     public int CurrentPointsOnLevel { get; set; }
     [field: SerializeField] public GameplayStage LevelStage { get; set; } = GameplayStage.Spawners;

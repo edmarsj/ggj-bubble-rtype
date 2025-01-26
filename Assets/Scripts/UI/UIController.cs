@@ -18,62 +18,28 @@ namespace Game.UI
         [SerializeField] private CanvasGroup _cgAlert;
         [SerializeField] private CanvasGroup _cgGameOver;
 
-        [Header("Transition")]
-        [SerializeField] private Image[] _transitionImages;
-
 
         private void Awake()
-        {            
+        {
             _txtLevelName.text = _shared.CurrentLevel.LevelName;
             _txtPoints.text = _shared.TotalPoints.ToString();
             _cgBoss.alpha = 0f;
             _cgAlert.alpha = 0f;
             _cgGameOver.alpha = 0f;
-
-            foreach (var image in _transitionImages)
-            {
-                image.fillAmount = 1f;
-            }
         }
 
         private void OnEnable()
         {
             _shared.OnBeginBossBattle.AddListener(OnBeginBossBattle);
             _shared.OnEndBossBattle.AddListener(OnEndBossBattle);
-            _shared.FadeInScreen.AddListener(OnFadeInScreen);
-            _shared.FadeOutScreen.AddListener(OnFadeOutScreen);
             _shared.OnPlayerDie.AddListener(OnPlayerDeath);
         }
-      
+
         private void OnDisable()
         {
             _shared.OnBeginBossBattle.RemoveListener(OnBeginBossBattle);
             _shared.OnEndBossBattle.RemoveListener(OnEndBossBattle);
-            _shared.FadeInScreen.RemoveListener(OnFadeInScreen);
-            _shared.FadeOutScreen.RemoveListener(OnFadeOutScreen);
             _shared.OnPlayerDie.RemoveListener(OnPlayerDeath);
-        }
-
-        private void OnFadeOutScreen()
-        {
-            StartCoroutine(AnimationHelpers.SmoothLerp(f =>
-            {
-                foreach (var image in _transitionImages)
-                {
-                    image.fillAmount = f;
-                }
-            }, 0f, 1f, 1f));
-        }
-
-        private void OnFadeInScreen()
-        {
-            StartCoroutine(AnimationHelpers.SmoothLerp(f =>
-            {
-                foreach (var image in _transitionImages)
-                {
-                    image.fillAmount = f;
-                }
-            }, 1f, 0f, 1f));
         }
 
         #region Core

@@ -12,25 +12,32 @@ namespace Game.Menu
         public Image IHold_button;
 
         [SerializeField] private float _button_hold_time;
-
+        private bool _returningToMenu = false;
         private void Start()
         {
             //Set
             Credits_group.alpha = 0f;
             TCredits.SetActive(true);
-            IHold_button.fillAmount = 0f;
+            IHold_button.fillAmount = 0f;            
         }
 
         #region Core
 
         private void Update()
         {
+            if (_returningToMenu)
+            {
+                return;
+            }
+
             //Call
             Inputs();
         }
 
         private void Inputs()
         {
+            
+
             if (Input.GetButtonDown("Fire1"))
             {
                 //Set
@@ -52,6 +59,7 @@ namespace Game.Menu
 
                 if (_button_hold_time >= 2f)
                 {
+                    _returningToMenu = true;
                     //Call
                     Change_scene("Menu");
                 }
@@ -71,8 +79,7 @@ namespace Game.Menu
 
         private void Change_scene(string scene)
         {
-            //Call
-            SceneManager.LoadScene(scene);
+            TransitionController.Instance.TransitionToScene(scene);            
         }
 
         #endregion

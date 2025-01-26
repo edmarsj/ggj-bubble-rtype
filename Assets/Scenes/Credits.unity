@@ -309,8 +309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2190}
-  m_SizeDelta: {x: 12.45, y: 29.92}
+  m_AnchoredPosition: {x: 0, y: -3720.3708}
+  m_SizeDelta: {x: 12.45, y: 58.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &553126139
 MonoBehaviour:
@@ -334,10 +334,23 @@ MonoBehaviour:
       m_Calls: []
   m_text: "(Time)\n\n- Programa\xE7\xE3o -\nEdmar: Programador L\xEDder\nNat\xE3:
     Auxiliar de Programa\xE7\xE3o\n\n\n- Game Design e Level Design -\nEdmar: Game
-    Design\nJess\xE9: Level Design\n\n\n- SFX (Sons e M\xFAsicas) -\nNat\xE3\n\n\n-
-    VFX (Efeitos Visuais) -\nEdmar: VFX e Shaders\n\n\n- Arte -\nUnity Asset Store:\n2D
-    Space Kit\nSpace Shooter Template FREE\n\n\n- Testes -\nEdmar\nNat\xE3\nJess\xE9\n\n\n-
-    Agradecimentos Especiais -\nGlobal Game Jam: Host do evento"
+    Design\nJess\xE9: Level Design\n\n\n- SFX (Sons e M\xFAsicas) -\nNat\xE3\n\n-
+    Direitos\nSingularity by Neon.Deflector\r\nhttps://neondeflector.bandcamp.com\r\nPromoted
+    by \u202A@RoyaltyFreePlanet\u202C\r\nhttps://royaltyfreeplanet.com\r\nCreative
+    Commons Attribution 3.0\r\nhttp://bit.ly/RFP_CClicense\n\n\nVHS Heroes by Punch
+    Deck\r\nhttps://punchdeck.bandcamp.com\r\nPromoted by \u202A@RoyaltyFreePlanet\u202C\r\nhttps://royaltyfreeplanet.com\r\nCreative
+    Commons Attribution 3.0\r\nhttp://bit.ly/RFP_CClicense\n\n\nStargate by HurricaneTurtle\r\nhttps://hurricaneturtles.bandcamp.com\r\nPromoted
+    by \u202A@RoyaltyFreePlanet\u202C\r\nhttps://royaltyfreeplanet.com\r\nCreative
+    Commons Attribution 3.0\r\nhttp://bit.ly/RFP_CClicense\n\n\nDeflector by Ghostrifter\r\nhttps://ghostrifterofficial.bandcamp.com\r\nPromoted
+    by \u202A@RoyaltyFreePlanet\u202C\r\nhttps://royaltyfreeplanet.com\r\nCreative
+    Commons Attribution-ShareAlike 3.0\r\nhttp://bit.ly/RFP_CCSAlicense\n\n\nThe
+    Sandman by Jaxius\r\nhttps://jaxiusmusic.com\r\nPromoted by @royaltyfreeplanet
+    - https://royaltyfreeplanet.com\r\nCreative Commons Attribution 3.0\r\nhttp://bit.ly/RFP_CClicense\n\n\nTitan
+    by Vladmsorensen\r\nhttps://vladm.bandcamp.com\r\nPromoted by \u202A@RoyaltyFreePlanet\u202C\r\nhttps://royaltyfreeplanet.com\r\nCreative
+    Commons Attribution 3.0\r\nhttp://bit.ly/RFP_CClicense\n\n\n- VFX (Efeitos Visuais)
+    -\nEdmar: VFX e Shaders\n\n\n- Arte -\nUnity Asset Store:\n2D Space Kit\nSpace
+    Shooter Template FREE\n\n\n- Testes -\nEdmar\nNat\xE3\nJess\xE9\n\n\n- Agradecimentos
+    Especiais -\nGlobal Game Jam: Host do evento"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1131,8 +1144,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1244343756171326752, guid: 89bb5d7e9d6ca1940992ec595460655c,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 025e6d2fa3ef1b5468fa1d6deb3c52bd, type: 3}
-  m_Resource: {fileID: 8300000, guid: 025e6d2fa3ef1b5468fa1d6deb3c52bd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cdfa6600bf56f8d46a992d573c9e7bdb, type: 3}
+  m_Resource: {fileID: 8300000, guid: cdfa6600bf56f8d46a992d573c9e7bdb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1

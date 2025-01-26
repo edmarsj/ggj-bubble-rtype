@@ -10,6 +10,7 @@ public class Damageable : MonoBehaviour
     [field: SerializeField] public UnityEvent OnTakeDamage { get; set; }
     public float CurrentLife { get; private set; }
     [field: SerializeField] public bool IsPaused { get; set; } = false;
+    [field: SerializeField] public bool Indestructible { get; set; } = false;
 
     [field: SerializeField] public bool Dead { get; set; }
 
@@ -32,11 +33,15 @@ public class Damageable : MonoBehaviour
         }
 
         OnTakeDamage?.Invoke();
-        CurrentLife -= amt;
 
-        if (CurrentLife <= 0)
+        if (!Indestructible)
         {
-            Kill();
+            CurrentLife -= amt;
+
+            if (CurrentLife <= 0)
+            {
+                Kill();
+            }
         }
 
         //Sound

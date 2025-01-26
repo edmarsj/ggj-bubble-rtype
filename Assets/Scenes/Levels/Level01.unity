@@ -194,6 +194,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &13019992
 MonoBehaviour:
@@ -343,6 +344,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &35488218
 MonoBehaviour:
@@ -914,6 +916,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &174220179
 MonoBehaviour:
@@ -1280,6 +1283,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &232614616
 MonoBehaviour:
@@ -1523,6 +1527,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &272527163
 MonoBehaviour:
@@ -1739,6 +1744,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &349774726
 MonoBehaviour:
@@ -2211,6 +2217,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &569002457
 MonoBehaviour:
@@ -2269,6 +2276,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &569424110
 MonoBehaviour:
@@ -3173,6 +3181,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!1 &752700336
 GameObject:
@@ -3497,6 +3506,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!1 &906865922 stripped
 GameObject:
@@ -3542,6 +3552,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &906865925
 MonoBehaviour:
@@ -3691,6 +3702,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &924193613
 MonoBehaviour:
@@ -3823,6 +3835,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &943599107
 MonoBehaviour:
@@ -4008,15 +4021,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1816312518877737893, guid: 1f444a7ce114af64ebd72e4b9b14aadc,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1009987433}
-    - targetCorrespondingSourceObject: {fileID: 1816312518877737893, guid: 1f444a7ce114af64ebd72e4b9b14aadc,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1009987432}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f444a7ce114af64ebd72e4b9b14aadc, type: 3}
 --- !u!4 &1009987430 stripped
 Transform:
@@ -4024,58 +4029,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1009987429}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1009987431 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1816312518877737893, guid: 1f444a7ce114af64ebd72e4b9b14aadc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1009987429}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1009987432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009987431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ac8e3ab32768844eb66749a23d39038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MaxLife>k__BackingField: 8
-  <OnDie>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1009987431}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  <OnTakeDamage>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  <IsPaused>k__BackingField: 0
-  <Dead>k__BackingField: 0
---- !u!114 &1009987433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009987431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222f2e9e0d2e60f46b94c0218393e8a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rotation: {x: 0, y: 0, z: -7}
 --- !u!1 &1024549214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1816312518877737893, guid: 1f444a7ce114af64ebd72e4b9b14aadc,
@@ -4120,6 +4073,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1024549217
 MonoBehaviour:
@@ -4242,6 +4196,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1060636243
 MonoBehaviour:
@@ -4649,6 +4604,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1113908679
 MonoBehaviour:
@@ -4799,6 +4755,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1123396667
 MonoBehaviour:
@@ -4857,6 +4814,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1128615356
 MonoBehaviour:
@@ -5185,6 +5143,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1154386476
 MonoBehaviour:
@@ -5417,6 +5376,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1179341604
 MonoBehaviour:
@@ -5565,6 +5525,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1215482878
 MonoBehaviour:
@@ -5799,6 +5760,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1310535278
 MonoBehaviour:
@@ -5964,6 +5926,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1318571357
 MonoBehaviour:
@@ -6029,6 +5992,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!1 &1394391500
 GameObject:
@@ -6105,6 +6069,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1397006913
 MonoBehaviour:
@@ -6255,6 +6220,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1464722522
 MonoBehaviour:
@@ -6313,6 +6279,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1498968652
 MonoBehaviour:
@@ -6748,6 +6715,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1547690117
 MonoBehaviour:
@@ -6962,6 +6930,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1588956782
 MonoBehaviour:
@@ -7195,6 +7164,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1709782095
 MonoBehaviour:
@@ -7360,6 +7330,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1716315872
 MonoBehaviour:
@@ -7830,6 +7801,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &1787752614
 MonoBehaviour:
@@ -8005,6 +7977,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!1001 &1980459420
 PrefabInstance:
@@ -8239,6 +8212,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!1 &2123457926 stripped
 GameObject:
@@ -8284,6 +8258,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 0
   <Dead>k__BackingField: 0
 --- !u!114 &2123457929
 MonoBehaviour:

@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 4664701805924041300}
   - component: {fileID: 163858153193278470}
   - component: {fileID: 7237765640868192312}
+  - component: {fileID: 9014378478827771584}
+  - component: {fileID: 7245492767905435011}
+  - component: {fileID: 4764880375659331298}
   m_Layer: 0
   m_Name: Asteroid 1
   m_TagString: Obstacle
@@ -58,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 461abe56239926f4db3e9d6e6c8985a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -175,3 +178,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6caceca48cc4f34eb2cfdf9d7713352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9014378478827771584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816312518877737893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac8e3ab32768844eb66749a23d39038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxLife>k__BackingField: 8
+  <OnDie>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1816312518877737893}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnTakeDamage>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <IsPaused>k__BackingField: 0
+  <Indestructible>k__BackingField: 1
+  <Dead>k__BackingField: 0
+--- !u!114 &7245492767905435011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816312518877737893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92e082de777e204d907c24be2332939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shared: {fileID: 11400000, guid: cd406d8a5ce3905468ce5a9556335b87, type: 2}
+  _points: 0
+--- !u!114 &4764880375659331298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816312518877737893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222f2e9e0d2e60f46b94c0218393e8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 0, z: -7}

@@ -110,6 +110,7 @@ public class Player : PausableBehaviour
         if (_shared.LevelStage == GameplayStage.BossPresentation)
         {
             _bullet_charge = 0f;
+            StopChargeParticleEmission();
             return;
         }
 

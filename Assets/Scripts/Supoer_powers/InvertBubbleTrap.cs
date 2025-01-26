@@ -15,9 +15,7 @@ namespace Game.Super_powers
         [SerializeField] private float _duration = 10f;
         [SerializeField] private Transform _root;
         [SerializeField] private SpriteRenderer _mainRenderer;
-        [SerializeField] private Collider2D _innerCollider;
-
-
+        [SerializeField] private Collider2D _innerCollider;        
 
         private LevelModificators _realLevelModificators;
 
@@ -28,7 +26,13 @@ namespace Game.Super_powers
             StartCoroutine(AnimationHelpers.SmoothTransformScale(_root, Vector3.zero, Vector3.one, .3f));
             Invoke(nameof(DestroyTrap), _duration);
         }
-
+        private void OnDisable()
+        {
+            if (_playerTraped)
+            {
+                RestoreLevel();
+            }
+        }
         protected override void DoUpdate()
         {
             if (!TrySetTrap())

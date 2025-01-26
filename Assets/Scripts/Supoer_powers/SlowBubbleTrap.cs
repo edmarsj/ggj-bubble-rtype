@@ -31,6 +31,14 @@ namespace Game.Super_powers
             Invoke(nameof(DestroyTrap), _duration);
         }
 
+        private void OnDisable()
+        {
+            if (_playerTraped)
+            {
+                RestoreLevel();
+            }
+        }
+
         protected override void DoUpdate()
         {
             if (!TrySetTrap())
